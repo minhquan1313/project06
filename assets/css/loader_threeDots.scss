@@ -1,0 +1,104 @@
+@import "myVar";
+$bg_color: $color_main;
+$border_color: #fff;
+
+.loader3ThreeDots {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    background: $bg_color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    will-change: background-color, opacity;
+}
+.loader3ThreeDots__dots {
+    display: flex;
+}
+.loader3ThreeDots__dots-dot {
+    width: 12px;
+    height: 12px;
+    background: $border_color;
+    border-radius: 50%;
+    margin: 0 8px;
+    // translateX(calc(-600% + 16px))
+    --modal-loader__dots-dotX: 100%;
+    --modal-loader__dots-dotY: 0%;
+
+    .loader3ThreeDots.pause & {
+        animation-play-state: paused;
+
+        // animation-fill-mode: forwards;
+
+        // animation-iteration-count: unset;
+
+        // animlit
+
+        // animation-timing-function: ;
+    }
+
+    @keyframes modal-loader__dots-dot12 {
+        0% {
+            transform: translateX(0) translateY(0);
+        }
+        60% {
+            transform: translateX(calc(100% + 16px)) translateY(0);
+        }
+        100% {
+            transform: translateX(calc(100% + 16px)) translateY(0);
+        }
+    }
+    @keyframes modal-loader__dots-dot3 {
+        0% {
+            transform: rotate(0);
+        }
+        60% {
+            transform: rotate(180deg);
+        }
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+    &:nth-child(1) {
+        animation: modal-loader__dots-dot12 1.2s infinite;
+        // --modal-loader__dots-dotX: 100%;
+        // --modal-loader__dots-dotY: 0;
+    }
+    &:nth-child(2) {
+        animation: modal-loader__dots-dot12 1.2s infinite;
+        // transform: translateX(calc(100% + 16px));
+    }
+    &:nth-child(3) {
+        animation: modal-loader__dots-dot3 1.2s infinite;
+        transform-origin: calc(-200% + 2px);
+        // transform: translateX(calc(100% + 16px));
+    }
+}
+.loader3-maskAfterLoad {
+    position: fixed;
+
+    background: $border_color;
+
+    border-radius: 50%;
+
+    will-change: top, left, width, height, border-radius;
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        height: 100%;
+        width: auto;
+
+        // object-fit: cover;
+
+        // overflow: visible;
+    }
+}

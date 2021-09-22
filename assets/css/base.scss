@@ -1,0 +1,83 @@
+@import "myVar";
+// Start FONT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@font-face {
+    font-family: "phucLong";
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot");
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"),
+        url("/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+// -=End FONT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Start scroll bar-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+::-webkit-scrollbar {
+    width: $scroll_bar_width;
+    height: 0;
+
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: $color_grey--lighter;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color_main;
+    border-radius: 2px;
+}
+// -=End scroll bar-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+    // outline: 10px solid red;
+}
+body {
+    font-family: $plFont;
+
+    scroll-behavior: smooth;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    font-family: inherit;
+    // outline: none;
+
+    appearance: none;
+}
+
+input {
+    font-family: inherit;
+    // outline: none;
+
+    appearance: none;
+}
+// Start common classes-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.frame {
+    display: flex;
+    width: 100%;
+}
+.frame__inner {
+    width: 1280px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pt {
+    position: relative;
+    width: 100%;
+    padding-top: var(--pt);
+}
+.t {
+    background: rgba(204, 204, 204, 0.4);
+}
+// -=End common classes-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

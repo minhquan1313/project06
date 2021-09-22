@@ -1,0 +1,154 @@
+.content {
+    position: relative;
+    z-index: 1;
+    padding: $spacing_l * 2 0;
+}
+.blurCircle {
+    position: absolute;
+    top: 0%;
+    z-index: -1;
+
+    > div::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background: $color_main-fade;
+
+        border-radius: 50%;
+
+        filter: blur(60px);
+
+        content: "";
+    }
+
+    &.blurCircle--1 {
+        left: 0;
+
+        width: 30%;
+
+        > div::after {
+            top: -50%;
+            left: -40%;
+        }
+    }
+    &.blurCircle--2 {
+        // display: none;
+        // top: -100%;
+        right: 0;
+
+        width: 40%;
+
+        > div::after {
+            top: -50%;
+            right: -40%;
+
+            background: $color_main--lighter-fade;
+        }
+    }
+}
+.content__inner {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+
+    .content--alt & {
+        flex-direction: row-reverse;
+    }
+}
+.content_half {
+    flex: 1;
+}
+.content_wrapper {
+    padding: 0 $spacing_m;
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+.content_wrapper--icon {
+    display: flex;
+
+    width: 100%;
+
+    svg {
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+    }
+}
+
+.content__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: $color_main;
+}
+.content__des {
+    font-size: 20px;
+    padding: $spacing_m 0;
+
+    .content--alt & {
+        text-align: right;
+    }
+}
+.content__btn {
+    position: relative;
+
+    display: block;
+
+    font-size: 18px;
+    color: $color_main--darker;
+
+    background: transparent;
+
+    padding: $spacing_ss $spacing_l;
+
+    border: 1px solid $color_main--lighter;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s, background 0.05s;
+
+    overflow: hidden;
+
+    float: left;
+
+    .content--alt & {
+        float: right;
+    }
+    &::after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: -1;
+
+        background: $color_main--lighter;
+
+        clip-path: polygon(0 100%, 0 0, 31% 18%, 43% 100%, 81% 0, 100% 61%, 100% 100%);
+
+        transition: 0.4s;
+        content: "";
+    }
+
+    &:hover {
+        color: #fff;
+
+        background: $color_main--lighter;
+
+        transition: 0.3s, background 0.05s 0.3s;
+
+        &::after {
+            top: 0;
+            clip-path: polygon(0 100%, 0 0, 28% 0, 56% 0, 82% 0, 100% 0, 100% 100%);
+
+            // transform: scale(1.1);
+        }
+    }
+}

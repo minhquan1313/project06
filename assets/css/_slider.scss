@@ -1,0 +1,245 @@
+$border: 10px;
+$scale: 2.6;
+
+.slider {
+  user-select: none;
+  overflow: hidden;
+}
+.slider__items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  perspective: 800px;
+
+  transform: translateX(0px);
+
+  //   background: red;
+  //   display: flex;
+  //   overflow-y: hidden;
+  &:not(:active):hover {
+    cursor: grab;
+  }
+  &:active {
+    cursor: grabbing;
+  }
+}
+.slider__item,
+.slider__item--popupFree {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+
+  display: flex;
+  align-items: center;
+
+  width: calc(100% / 3);
+  flex-shrink: 0;
+  overflow: hidden;
+
+  transform-style: preserve-3d;
+
+  will-change: transform, left;
+  //   opacity: 0;
+
+  transform: scale(0);
+  &.slider__item--left {
+    transform: scale(1) rotateY(30deg);
+    opacity: 1;
+  }
+  &.slider__item--center {
+    transform: scale(2.6) rotateY(0deg);
+    z-index: 1;
+    opacity: 1;
+  }
+  &.slider__item--right {
+    transform: scale(1) rotateY(-30deg);
+    opacity: 1;
+  }
+
+  .pt {
+    border-radius: $border;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: opacity 0.3s;
+
+    border-radius: inherit;
+  }
+}
+
+.slider__item--popupFree {
+  z-index: 3;
+  transform: scale(1);
+  will-change: unset;
+  display: none;
+  pointer-events: none;
+  .pt {
+    border-radius: $border * $scale;
+  }
+}
+.slider__item--loading {
+  .pt {
+    img {
+      opacity: 0;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      z-index: -1;
+
+      transform: translate(-50%, -50%);
+
+      background: $color_main--darker;
+
+      clip-path: circle(30% at 50% 50%);
+
+      animation: result_item_loader 0.4s ease-in alternate infinite;
+
+      content: "";
+    }
+
+    &::after,
+    &::before {
+      transition: opacity 0.3s, content 0s 0.3s;
+    }
+  }
+}
+.slider__item--loaded {
+  .pt {
+    img {
+      opacity: 1;
+    }
+
+    &::after,
+    &::before {
+      opacity: 0;
+      content: unset;
+    }
+  }
+}
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+
+  transform: translateX(-50%);
+  //   background: #000;
+
+  display: flex;
+}
+.dot {
+  // width: 20px;
+  height: 8px;
+  margin: 0 $spacing_m;
+
+  // background: #fff;
+  // border: 1px solid $color_main--light;
+
+  // border-radius: 4px;
+
+  // transform: rotate(-12deg) skewX(66deg);
+
+  // transition: 0.3s;
+
+  > svg {
+    height: 100%;
+    width: auto;
+
+    fill: transparent;
+
+    stroke: $color_main--light;
+    stroke-width: 4;
+
+    transition: 0.3s;
+  }
+  &.active
+  // ,  &:hover
+  {
+    svg {
+      fill: $color_main;
+    }
+  }
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+.arrowNav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.arrowNav--left,
+.arrowNav--right {
+  position: absolute;
+  top: 0;
+
+  width: 40px;
+  // height: auto;
+
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  &.active
+  // ,&:active
+  {
+    path {
+      animation: arrowAnimation 0.6s ease-out;
+
+      @keyframes arrowAnimation {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      &:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+    }
+  }
+}
+.arrowNav--left {
+  left: $spacing_s;
+  transform: translateY(-50%);
+}
+.arrowNav--right {
+  right: $spacing_s;
+  transform: translateY(-50%) scaleX(-1);
+}
