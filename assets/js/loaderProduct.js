@@ -12,7 +12,7 @@ function __loaderRemove() {
     const animeDura = 800,
         animeDelay = 140;
 
-    const delayTimeout = 400;
+    const delayTimeout = 700;
 
     let svg;
 

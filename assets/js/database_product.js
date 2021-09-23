@@ -9,14 +9,14 @@ function getDataProduct() {
         sweetness: "Sweetness Levels:",
         extra: "Extra:",
         free: "Free",
-        staticDescription: "Product default description. Product default description. Product default description. ",
+        staticDescription: "Product default description. Product default description. Product default description.",
         staticShortDescription: "Some short description. Some short description. ",
         categories: {
             sp: { name: "Specialty", child: { mt: "Milk Tea", ss: "Sea Salt", ft: "Fruit Tea" } },
             cf: { name: "Coffee", child: { tc: "Traditinal Coffee", cc: "Classic Coffee" } },
             bnc: { name: "Blended Non-caffein" },
             bb: { name: "Blended Beverage" },
-            sm: { name: "Smoothie" },
+            sm: { name: "Smoothie", child: { test: "This is for test" } },
             unknown: { name: "Unknown" },
         },
     };
@@ -39,12 +39,14 @@ function getDataProduct() {
                 /**
                  * Must have all these two, if you are using your img, in your source, it will use
                  * the staticImgUrl above. For ex:
-                 * staticImgUrl = "/img/product/"
+                 * staticImgUrl = "/project06/img/product/"
                  * cover: "teaImg.jpg"
                  * ==> /img/product/teaImg.jpg
                  *
                  * Otherwise, if you do putting a link such as https://..., you should have this option enabled
-                 * noStatic : true
+                 * noStaticCover : true
+                 * noStaticPng : true
+                 *
                  *  */
                 cover: "Sea salt Jasmine.jpg",
                 png: "Sea salt Jasmine.png",
@@ -196,9 +198,10 @@ function getDataProduct() {
                 child: "tc",
             },
             imgs: {
-                cover: "Sea salt Jasmine.jpg",
                 png: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                cover: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
                 noStaticPng: true,
+                noStaticCover: true,
             },
             type: [
                 {
@@ -1404,6 +1407,7 @@ function getDataProduct() {
             name: "Oolong Milk Tea",
             description: "This is description for Oolong Milk Tea",
             category: {
+                child: "test",
                 name: "sm",
             },
             imgs: {
@@ -1475,6 +1479,7 @@ function getDataProduct() {
             name: "Signature Coffee Milk Tea",
             description: "",
             category: {
+                child: "test",
                 name: "sm",
             },
             imgs: {
@@ -1519,6 +1524,10 @@ function getDataProduct() {
      *    Notice above only, don't mind the codes below
      */
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
+    var u = document.querySelector('script[src$="database_product.js"]');
+    if (u) {
+        u.remove();
+    }
     return items;
     function Product(obj) {
         if (autoId) {
@@ -1577,14 +1586,11 @@ function getDataProduct() {
             this.category = displayAs.categories.unknown.name;
         }
 
+        this.unknown = displayAs.categories.unknown.name;
+
         this.currency = displayAs.currency;
     }
 }
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 let _product_itemsAutoId = 0;
 const _product_items = getDataProduct();
-
-var ____ijijijij = document.querySelector('script[src$="database_product.js"]');
-if (____ijijijij) {
-    ____ijijijij.remove();
-}

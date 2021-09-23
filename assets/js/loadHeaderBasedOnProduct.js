@@ -12,6 +12,7 @@ function loadHeader() {
         return ttt;
     }
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
+
     const __productUrl = "/project06/products/index.html";
     const headerNav = document.querySelector(".main .header__nav .header__nav_items");
     headerNav.innerHTML = ``;

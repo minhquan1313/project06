@@ -12,14 +12,16 @@ function getDataSlider() {
      *
      */
     // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    let u = document.querySelector('script[src$="database_slider.js"]');
+    if (u) {
+        u.remove();
+    }
     return items;
     function Slider({ src }) {
         this.src = src;
+
+        let fakeImg = new Image();
+        fakeImg.src = src;
     }
 }
 const _slider_items = getDataSlider();
-
-var ____ijijijij = document.querySelector('script[src$="database_slider.js"]');
-if (____ijijijij) {
-    ____ijijijij.remove();
-}

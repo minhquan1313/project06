@@ -41,21 +41,6 @@ header ~ *:nth-child(2) {
   margin: auto;
 }
 
-.header__logo > svg path {
-  stroke: #00703c;
-  stroke-width: 0.5;
-  stroke-dasharray: 174;
-  stroke-dashoffset: 174;
-  fill-opacity: 0;
-  -webkit-animation: svgStroke 1s forwards;
-          animation: svgStroke 1s forwards;
-}
-
-.header__logo.active path {
-  -webkit-animation: svgStroke 0.6s forwards;
-          animation: svgStroke 0.6s forwards;
-}
-
 @-webkit-keyframes svgStroke {
   60% {
     stroke-dashoffset: 0;
@@ -136,7 +121,7 @@ header ~ *:nth-child(2) {
 }
 
 .header__nav_item:hover .nav_item__icon {
-  color: #39bd7f;
+  color: #078770;
 }
 
 .header__nav_item.header__nav_item--hasSub:hover .nav_item__icon {
@@ -169,6 +154,11 @@ header ~ *:nth-child(2) {
           transform: scale(0);
 }
 
+.header__nav_item.header__nav_item--hasSub .nav_item__name .a--mask:hover ~ p {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 .nav_item__name > p {
   position: relative;
   z-index: 1;
@@ -178,7 +168,7 @@ header ~ *:nth-child(2) {
 }
 
 .header__nav_item:hover .nav_item__name > p {
-  color: #39bd7f;
+  color: #078770;
 }
 
 .header__nav_item.header__nav_item--hasSub:hover .nav_item__name {
@@ -1181,6 +1171,7 @@ footer {
   position: absolute;
   top: 0%;
   z-index: -1;
+  will-change: transform;
 }
 
 .blurCircle > div::after {
@@ -1254,6 +1245,7 @@ footer {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  will-change: transform;
 }
 
 .content_wrapper--icon svg {
@@ -1267,11 +1259,13 @@ footer {
   font-size: 30px;
   font-weight: bold;
   color: #00703c;
+  will-change: transform;
 }
 
 .content__des {
   font-size: 20px;
   padding: 20px 0;
+  will-change: transform;
 }
 
 .content--alt .content__des {

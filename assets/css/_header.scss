@@ -35,21 +35,20 @@ header {
         height: auto;
         margin: auto;
         path {
-            stroke: $color_main;
-            //   stroke: transparent;
-            //   fill: transparent;
-            stroke-width: 0.5;
-            stroke-dasharray: 174;
-            stroke-dashoffset: 174;
+            // stroke: $color_main;
+            // stroke-width: 0.5;
+            // stroke-dasharray: 174;
+            // stroke-dashoffset: 174;
 
-            fill-opacity: 0;
-            animation: svgStroke 1s forwards;
+            // fill-opacity: 0;
+
+            // animation: svgStroke 1s 4s forwards;
         }
     }
 
     &.active {
         path {
-            animation: svgStroke 0.6s forwards;
+            // animation: svgStroke 1s forwards;
             @keyframes svgStroke {
                 60% {
                     stroke-dashoffset: 0;
@@ -117,7 +116,8 @@ header {
     will-change: transform, left;
 
     .header__nav_item:hover & {
-        color: $color_main--lighter;
+        // color: $color_main--lighter;
+        color: $color_option--2;
     }
 
     .header__nav_item.header__nav_item--hasSub:hover & {
@@ -148,6 +148,10 @@ header {
     .a--mask {
         z-index: 2;
         transform: scale(0);
+
+        .header__nav_item.header__nav_item--hasSub &:hover ~ p {
+            transform: scale(1.1);
+        }
     }
 
     > p {
@@ -159,7 +163,8 @@ header {
 
         // width: fit-content;
         .header__nav_item:hover & {
-            color: $color_main--lighter;
+            // color: $color_main--lighter;
+            color: $color_option--2;
         }
     }
 
@@ -176,6 +181,8 @@ header {
             background: #fff;
 
             box-shadow: 0px 4px 4px $shadow06;
+
+            // transform: scale(1.1);
         }
 
         .a--mask {

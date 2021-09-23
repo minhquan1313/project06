@@ -4,6 +4,7 @@ function header_searchHandler() {
     const fakeDelaySearch = 600;
     const minIndex = 2;
     const url = "/project06/products/index.html";
+    const resultLimit = 5;
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     const pcSearch = document.querySelector(".header__search_input");
@@ -122,10 +123,11 @@ function header_searchHandler() {
 
             resetSearchResult();
 
-            result.forEach((r) => {
+            result.forEach((r, i) => {
                 // console.log(r);
-
-                resultToWeb(htmlProduct(r), true);
+                if (i < resultLimit) {
+                    resultToWeb(htmlProduct(r), true);
+                }
             });
         } else {
             if (!failing) {

@@ -1,0 +1,192 @@
+svg {
+    path {
+        will-change: transform;
+    }
+}
+// START SVG ANIMATION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+svg.animate {
+    .leave {
+        animation: leaveMoving 2s var(--d) ease-in-out alternate infinite;
+        &1 {
+            transform-origin: 21% 90%;
+            transform: rotate(60deg);
+            --d: 0s;
+            --deg: 15deg;
+            // animation: leaveMoving 2s linear alternate infinite;
+        }
+        &2 {
+            transform-origin: 22% 90%;
+            --d: -0.4s;
+            --deg: 5deg;
+            // animation: leaveMoving 2s 0.4s ease-in-out alternate infinite;
+        }
+        &3 {
+            transform-origin: 21% 90%;
+            --d: -0.2s;
+            --deg: 10deg;
+            // transform: rotate(10deg);
+            // animation: leaveMoving 2s 0.2s ease-in-out alternate infinite;
+        }
+        @keyframes leaveMoving {
+            from {
+                transform: rotate(-5deg);
+            }
+            to {
+                transform: rotate(var(--deg));
+            }
+        }
+    }
+    #cupShadow {
+        transform-origin: 50% 91%;
+
+        animation: cupShadow 1.4s ease-in-out alternate infinite;
+        @keyframes cupShadow {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
+        }
+    }
+    .leaveM {
+        animation: leaveM var(--t) ease-out infinite, leaveMOpa ease-in-out var(--t) infinite;
+        &1 {
+            transform-origin: 3% 56%;
+            --percent: 30%;
+            --t: 3s;
+        }
+        &2 {
+            transform-origin: 70% 14%;
+            --percent: 70%;
+            --t: 6s;
+        }
+        &3 {
+            transform-origin: 32% 4%;
+            --percent: 80%;
+            --t: 9s;
+        }
+        @keyframes leaveM {
+            from {
+                //     opacity: 1;
+                transform: translateY(0) scaleX(-1);
+            }
+            to {
+                // opacity: 0;
+                transform: translateY(var(--percent)) scaleX(1);
+            }
+        }
+        @keyframes leaveMOpa {
+            0% {
+                opacity: 0;
+                // transform: translateY(0);
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                // transform: translateY(var(--percent));
+            }
+        }
+    }
+    .svgBub {
+        animation: svgBub 3s var(--d) ease-in-out infinite alternate;
+        &1 {
+            --d: 0s;
+        }
+        &2 {
+            --d: -3.7s;
+        }
+        &3 {
+            --d: -0.4s;
+        }
+
+        @keyframes svgBub {
+            from {
+                transform: translateX(3%);
+            }
+            to {
+                transform: translateX(-3%);
+            }
+        }
+    }
+    #lipton {
+        transform-origin: 52% 63%;
+
+        animation: lipton 3s alternate infinite;
+
+        @keyframes lipton {
+            from {
+                transform: rotate(10deg);
+            }
+            to {
+                transform: rotate(-20deg);
+            }
+        }
+    }
+    #lipton- {
+        transform-origin: 54% 62%;
+        transform: rotate(45deg);
+
+        animation: lipton 3s -0.3s alternate infinite;
+    }
+    #liptonRope {
+        transform-origin: 53.3% 62.4%;
+        animation: liptonRope 3s -0.3s alternate infinite;
+
+        @keyframes liptonRope {
+            from {
+                transform: scaleX(0.7);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+    }
+    #liptonM {
+        transform-origin: 70.4% 46%;
+
+        animation: liptonM 3s -0.3s alternate infinite;
+        // transform: translateX(-6%) rotate(10deg);
+
+        @keyframes liptonM {
+            from {
+                transform: translateX(-4%) rotate(10deg);
+            }
+            to {
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+    }
+    #liptonM- {
+        transform-origin: 70.3% 45.7%;
+        // transform: rotate(40deg);
+
+        animation: liptonM 3s -0.3s alternate infinite;
+    }
+    #liptonM--- {
+        transform-origin: 71% 46%;
+
+        animation: liptonM 3s -0.3s alternate infinite;
+        // transform: translateX(-6%) rotate(10deg);
+    }
+    #sTree {
+        transform-origin: 83% 91%;
+
+        animation: sTree 4s ease-in-out alternate infinite;
+
+        @keyframes sTree {
+            from {
+                transform: rotate(-4deg);
+            }
+            to {
+                transform: rotate(4deg);
+            }
+        }
+    }
+}
+// -=END SVG ANIMATION -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

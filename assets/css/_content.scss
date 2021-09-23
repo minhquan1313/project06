@@ -8,6 +8,8 @@
     top: 0%;
     z-index: -1;
 
+    will-change: transform;
+
     > div::after {
         position: absolute;
         width: 100%;
@@ -73,6 +75,8 @@
 
     width: 100%;
 
+    will-change: transform;
+
     svg {
         margin: 0 auto;
         width: 80%;
@@ -85,10 +89,14 @@
     font-size: 30px;
     font-weight: bold;
     color: $color_main;
+
+    will-change: transform;
 }
 .content__des {
     font-size: 20px;
     padding: $spacing_m 0;
+
+    will-change: transform;
 
     .content--alt & {
         text-align: right;

@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @font-face {
   font-family: "phucLong";
-  src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot");
-  src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
+  src: url("/assets/font/bauhaus/VLBauhausStdLight.eot");
+  src: url("/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"), url("/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
   font-style: normal;
   font-weight: normal;
 }
