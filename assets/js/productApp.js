@@ -798,7 +798,7 @@ function modalControls() {
     modalController.modal_content.addEventListener("mouseup", productUp);
 
     // modalController.modal_content.addEventListener("mousemove", (e) => {
-    //     console.log(e.which);
+    // console.log(e.which);
     // });
     // modalController.modal_content.addEventListener("click", productClick);
 
@@ -838,7 +838,7 @@ function modalControls() {
 
             let isMouse = e.button ? (e.button == 0 ? true : false) : true;
             if (product && isMouse) {
-                console.log("true");
+                // console.log("true");
                 isDown = true;
 
                 lastEx = e.x || e.touches[0].clientX;
@@ -1138,7 +1138,7 @@ function loadFirstProduct() {
     // console.log(Object.keys(params)[0]);
 
     // for (let param of params) {
-    //     console.log(param);
+    // console.log(param);
     // }
     // console.log("id", id);
 
