@@ -1478,8 +1478,8 @@ function getDataProduct() {
                 name: "sm",
             },
             imgs: {
-                cover: "/assets/img/products/Sea salt Jasmine.jpg",
-                png: "/assets/img/products/Sea salt Jasmine.png",
+                cover: "/project06/assets/img/products/Sea salt Jasmine.jpg",
+                png: "/project06/assets/img/products/Sea salt Jasmine.png",
                 noStaticCover: true,
                 noStaticPng: true,
             },
