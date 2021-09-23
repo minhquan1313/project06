@@ -3,7 +3,7 @@ function header_searchHandler() {
 
     const fakeDelaySearch = 600;
     const minIndex = 2;
-    const url = "/products/index.html";
+    const url = "/project06/products/index.html";
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     const pcSearch = document.querySelector(".header__search_input");
