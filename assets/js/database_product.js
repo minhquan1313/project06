@@ -1,5 +1,5 @@
 function getDataProduct() {
-    const staticImgUrl = "/assets/img/products/";
+    const staticImgUrl = "/project06/assets/img/products/";
     const autoId = true;
     const fixedNumber = 2;
 
