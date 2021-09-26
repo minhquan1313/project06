@@ -1,0 +1,42 @@
+@import "myVar";
+$header_heightOri: $header_height;
+$header_height: 50px;
+// PC 80em = 1280px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 80em) {
+}
+// TABLET 37.5em = 600px | 79.9375em = 1279px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 37.5em) and (max-width: 79.9375em) {
+    .arrowNav--left,
+    .arrowNav--right {
+        width: 34px;
+    }
+    .dots {
+        bottom: -6px;
+        // bottom: 5%;
+    }
+    .dot {
+        height: 6px;
+        // margin: 0 16px;
+    }
+    .slider__item--loading .pt img {
+        border-radius: 0;
+    }
+}
+// PHONE 37.4375em = 599px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@media (max-width: 37.4375em) {
+    .arrowNav--left,
+    .arrowNav--right {
+        display: none;
+    }
+    .dots {
+        bottom: 0px;
+        // bottom: 5%;
+    }
+    .dot {
+        height: 4px;
+        // margin: 0 16px;
+    }
+    .slider__item--loading .pt img {
+        border-radius: 0;
+    }
+}

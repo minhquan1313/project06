@@ -44,6 +44,7 @@ function setStuff() {
     });
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     const headerIcons = document.querySelectorAll(".header__nav_item");
+    const slider = document.querySelector(".slider");
     const sect1 = document.querySelector(".content");
     const sect2 = document.querySelector(".content--alt");
     const circleShape = [document.querySelector(".blurCircle--1"), document.querySelector(".blurCircle--2")];
@@ -57,6 +58,7 @@ function setStuff() {
     [...headerIcons].forEach((r) => {
         transformLeftScreen(r);
         r.style.transformOrigin = "right";
+        r.style.transition = "0s";
     });
     _myDefaultWp(headerIcons[0], () => {
         anime({
@@ -78,112 +80,172 @@ function setStuff() {
     // --------------------------------------------------------------------------------------------
     title.push(sect1.querySelector(".content__title"));
     des.push(sect1.querySelector(".content__des"));
-    cover.push(sect1.querySelector(".content_wrapper"));
+    cover.push(sect1.querySelector(".content__icon"));
     btn.push(sect1.querySelector(".content__btn"));
     arrSect.push(...title, ...des, ...cover, ...btn);
     title.push(sect2.querySelector(".content__title"));
     des.push(sect2.querySelector(".content__des"));
-    cover.push(sect2.querySelector(".content_wrapper"));
+    cover.push(sect2.querySelector(".content__icon"));
     btn.push(sect2.querySelector(".content__btn"));
-    arrSect = [...arrSect, ...title, ...des, ...cover, ...btn, ...circleShape];
+    arrSect = [...arrSect, ...title, ...des, ...cover, ...btn, ...circleShape, slider];
     arrSect.forEach((r) => {
+        // console.log("r", r);
         r.style.opacity = "0";
         r.style.transition = "0s";
     });
 
     if (window.innerWidth >= 1280) {
-        // cover.forEach((r) => {
-        //     r.style.transformOrigin = "left";
-        // });
         cover[0].style.transformOrigin = "left";
         cover[1].style.transformOrigin = "right";
-        // cover[0].style.transformOrigin = "right";
     }
     cover.forEach((r, i) => {
         _myDefaultWp(r, () => {
             // let ele = r;
-            anime({
-                targets: r,
-                opacity: [0, 1],
-                scale: [0, 1],
-                scaleX: { value: [0, 1], duration: 1500 },
+            // anime({
+            //     targets: r,
+            //     opacity: { value: [0, 1], easing: "easeOutSine" },
+            //     scale: [0, 1],
+            //     // scaleX: { value: [0, 1], duration: 1500 },
 
-                easing: "easeOutQuart",
-                duration: 800,
+            //     easing: "easeOutQuart",
+            //     duration: 800,
 
-                begin: () => {
-                    r.querySelector("svg").classList.add("animate");
-                },
+            //     begin: () => {
+            //         r.querySelector("svg").classList.add("animate");
+            //     },
 
-                complete: () => {
-                    rmStyle(r);
-                    // r.querySelector("svg").classList.add("animate");
-                },
-            });
+            //     complete: () => {
+            //         rmStyle(r);
+            //         // r.querySelector("svg").classList.add("animate");
+            //     },
+            // });
 
-            anime({
-                targets: circleShape[i],
-                opacity: [0, 1],
+            // anime({
+            //     targets: circleShape[i],
+            //     opacity: { value: [0, 1], easing: "easeOutSine" },
 
-                scale: [0, 1],
+            //     scale: [0, 1],
 
-                easing: "easeOutQuart",
-                duration: 1400,
-            });
+            //     easing: "easeOutQuart",
+            //     duration: 1400,
+            // });
+
+            // document.body.style.animation
+
+            r.style.animation = `animateB-I 1s forwards`;
+            r.classList.add("animate");
+            // r.querySelector("svg").classList.add("animate");
+            circleShape[i].style.animation = `animateZI 1s forwards`;
+
+            setTimeout(() => {
+                rmStyle(r);
+                rmStyle(circleShape[i]);
+            }, 1050);
         });
     });
 
-    title.forEach((r, i) => {
-        _myDefaultWp(r, () => {
-            // let ele = r;
-            let negative = !i ? -1 : 1;
-            anime({
-                targets: r,
+    // title.forEach((r, i) => {
+    //     _myDefaultWp(r, () => {
+    //         // let ele = r;
+    //         // let negative = !i ? -1 : 1;
+    //         // anime({
+    //         //     targets: r,
 
-                opacity: { value: [0, 1], easing: "easeOutBack" },
-                skewX: { value: [negative * 180, 0], duration: 1400 },
+    //         //     opacity: { value: [0, 1], easing: "easeOutSine" },
 
-                translateX: [`${-negative}00%`, 0],
+    //         //     // skewX: { value: [negative * 180, 0], duration: 1400 },
 
-                duration: 1200,
+    //         //     translateX: [`${-negative}00%`, 0],
 
-                complete: () => {
-                    rmStyle(r);
-                },
-            });
-        });
-    });
+    //         //     duration: 1200,
 
-    des.forEach((r) => {
+    //         //     complete: () => {
+    //         //         rmStyle(r);
+    //         //     },
+    //         // });
+    //         if (i == 0) {
+    //             r.style.animation = `animateLsI-R 1.2s forwards`;
+    //         } else {
+    //             r.style.animation = `animateLsI-L 1.2s forwards`;
+    //         }
+
+    //         setTimeout(() => {
+    //             rmStyle(r);
+    //         }, 1250);
+    //     });
+    // });
+
+    des.forEach((r, i) => {
         _myDefaultWp(r, () => {
             r.style.transformOrigin = "top";
             // let ele = r;
-            anime({
-                targets: r,
-                opacity: [0, 1],
-                // skewX: { value: [negative * 180, 0], duration: 1400 },
+            // anime({
+            //     targets: r,
+            //     opacity: { value: [0, 1], easing: "easeOutSine" },
+            //     // skewX: { value: [negative * 180, 0], duration: 1400 },
 
-                scaleY: [0, 1],
-                // translateX: [`${-negative}00%`, 0],
-                translateY: ["-100%", 0],
+            //     scaleY: [0, 1],
+            //     // translateX: [`${-negative}00%`, 0],
+            //     translateY: ["-100%", 0],
 
-                // delay: 400,
+            //     // delay: 400,
 
-                easing: "easeOutBack",
-                duration: 700,
+            //     easing: "easeOutBack",
+            //     duration: 700,
 
-                complete: () => {
-                    rmStyle(r);
-                },
-            });
+            //     complete: () => {
+            //         rmStyle(r);
+            //     },
+            // });
+
+            if (i == 0) {
+                title[i].style.animation = `animateLsI-R 1.2s forwards`;
+                r.style.animation = `animateLsI-R 1s .2s forwards`;
+                btn[i].style.animation = `animateLsI-R 1s .4s forwards`;
+            } else {
+                title[i].style.animation = `animateLsI-L 1.2s forwards`;
+                r.style.animation = `animateLsI-L 1s .2s forwards`;
+                btn[i].style.animation = `animateLsI-L 1s .4s forwards`;
+            }
+
+            setTimeout(() => {
+                rmStyle(r);
+                rmStyle(title[i]);
+                rmStyle(btn[i]);
+            }, 1250);
         });
     });
+    // --------------------------------------------------------------------------------------------
+    _myDefaultWp(slider, () => {
+        // let ele = r;
+        // anime({
+        //     targets: slider,
 
-    console.log(title);
+        //     opacity: { value: [0, 1], easing: "easeOutSine" },
+
+        //     translateY: [`100%`, 0],
+        //     easing: "easeOutCubic",
+        //     duration: 700,
+
+        //     complete: () => {
+        //         rmStyle(slider);
+        //     },
+        // });
+        slider.style.animation = `animateFI-U .7s forwards`;
+
+        setTimeout(() => {
+            // rmStyle(r);
+            rmStyle(slider);
+        }, 750);
+    });
+
+    // --------------------------------------------------------------------------------------------
+
+    // console.log(title);
 }
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var canRunAnimate = false;
-//     b;
+    // b=3;
 // setTimeout(() => {
 //     b = 3;
 // }, 0);
@@ -193,8 +255,11 @@ document.addEventListener("readystatechange", () => {
         setStuff();
         let inter = setInterval(() => {
             if (
+                typeof loader_loaded != "undefined" &&
                 loader_loaded
-                //  || typeof b != "undefined"
+                //
+                // ||typeof b != "undefined"
+                //
             ) {
                 clearInterval(inter);
                 canRunAnimate = true;

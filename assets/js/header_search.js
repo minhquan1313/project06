@@ -4,11 +4,17 @@ function header_searchHandler() {
     const fakeDelaySearch = 600;
     const minIndex = 2;
     const url = "/project06/products/index.html";
-    const resultLimit = 5;
+    const resultLimit = 10;
 
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
-    const pcSearch = document.querySelector(".header__search_input");
-    const pcResultBox = document.querySelector(".header__search .result__body_items");
+    const pcSearch = document.querySelector(".header__search_input"),
+        pcResultBox = document.querySelector(".result__body_items");
+
+    const mobileSearch = document.querySelector(".navMobile__side .header__search_input"),
+        mobileResultBox = document.querySelector(".navMobile__side  .result__body_items");
+
+    // console.log("mobileResultBox", mobileResultBox);
+    // let eleTrigger;
 
     let keyWord, lastKeyWord;
     let condition;
@@ -44,9 +50,15 @@ function header_searchHandler() {
 
     pcSearch.addEventListener("keydown", keydownFunc);
     pcSearch.addEventListener("keyup", searchFunc);
+
+    if (mobileSearch) {
+        mobileSearch.addEventListener("keydown", keydownFunc);
+        mobileSearch.addEventListener("keyup", searchFunc);
+    }
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     function keydownFunc(e) {
         lastKeyWord = this.value;
+        // eleTrigger = this;
     }
     function searchFunc(e) {
         // console.log("keyup", e);
@@ -125,7 +137,11 @@ function header_searchHandler() {
 
             result.forEach((r, i) => {
                 // console.log(r);
-                if (i < resultLimit) {
+                if (typeof resultLimit != "undefined") {
+                    if (i < resultLimit) {
+                        resultToWeb(htmlProduct(r), true);
+                    }
+                } else {
                     resultToWeb(htmlProduct(r), true);
                 }
             });
@@ -188,7 +204,7 @@ function header_searchHandler() {
         t.classList.add("result__body_item");
         t.classList.add("result__body_item--noClick");
 
-        t.innerHTML = `<li class="result__body_item result__body_item--noClick"><div class="result__body_item_wrapper"><div class="result_item_cover">${defaultType[type].icon}</div><div class="result_item_info"><p class="item_info__name item_info__name--error">${defaultType[type].msg}</p></div></div></li>`;
+        t.innerHTML = `<div class="result__body_item_wrapper"><div class="result_item_cover">${defaultType[type].icon}</div><div class="result_item_info"><p class="item_info__name item_info__name--error">${defaultType[type].msg}</p></div></div>`;
         // t.innerHTML = `
         // <li class="result__body_item result__body_item--noClick">
         //   <div class="result__body_item_wrapper">
@@ -205,12 +221,28 @@ function header_searchHandler() {
     }
     function resetSearchResult() {
         pcResultBox.innerHTML = "";
+        if (mobileResultBox) {
+            mobileResultBox.innerHTML = "";
+        }
     }
     function resultToWeb(html, hasImg) {
+        // console.log("eleTrigger", eleTrigger);
+
+        // mobileResultBox.parentElement
+
+        // eleTrigger.parentElement.querySelector
+
         pcResultBox.appendChild(html);
+        let cl = html.cloneNode(true);
+        if (mobileResultBox) {
+            // document.body.cloneNode(true);
+
+            mobileResultBox.appendChild(cl);
+        }
 
         if (hasImg) {
             let img = html.querySelector("img");
+            let imgCl = cl.querySelector("img");
 
             // console.log(img);
 
@@ -220,6 +252,14 @@ function header_searchHandler() {
             } else {
                 img.onload = (e) => {
                     html.classList.add("result__body_item--loaded");
+                };
+            }
+
+            if (imgCl.complete) {
+                cl.classList.add("result__body_item--loaded");
+            } else {
+                imgCl.onload = (e) => {
+                    cl.classList.add("result__body_item--loaded");
                 };
             }
         }

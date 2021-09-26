@@ -8,8 +8,6 @@
     top: 0%;
     z-index: -1;
 
-    will-change: transform;
-
     > div::after {
         position: absolute;
         width: 100%;
@@ -52,60 +50,83 @@
 .content__inner {
     position: relative;
 
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    // flex-direction: row;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+
+    column-gap: $spacing_m;
+
+    padding: 0 $spacing_m;
+
+    // .content--alt & {
+    // flex-direction: row-reverse;
+    // }
+}
+// .content_half {
+//     flex: 1;
+// }
+// .content_wrapper {
+//     padding: 0 $spacing_m;
+//     &::after {
+//         display: block;
+//         clear: both;
+//         content: "";
+//     }
+// }
+// .content_wrapper--icon {
+//     display: flex;
+
+//     width: 100%;
+
+//     svg {
+//         margin: 0 auto;
+//         width: 80%;
+//         height: auto;
+//     }
+// }
+.content__icon {
+    margin: auto;
+
+    margin-top: 0;
+    width: 70%;
+    grid-area: 1 / 1 / span 3 / span 1;
 
     .content--alt & {
-        flex-direction: row-reverse;
-    }
-}
-.content_half {
-    flex: 1;
-}
-.content_wrapper {
-    padding: 0 $spacing_m;
-    &::after {
-        display: block;
-        clear: both;
-        content: "";
-    }
-}
-.content_wrapper--icon {
-    display: flex;
-
-    width: 100%;
-
-    will-change: transform;
-
-    svg {
-        margin: 0 auto;
-        width: 80%;
-        height: auto;
+        grid-area: 1 / 2 / span 3 / span 1;
     }
 }
 
 .content__title {
+    // grid-area: 1/2;
+    grid-row: 1;
+
     text-align: center;
     font-size: 30px;
     font-weight: bold;
     color: $color_main;
-
-    will-change: transform;
 }
 .content__des {
+    // grid-area: 2/2;
+    grid-row: 2;
+
     font-size: 20px;
     padding: $spacing_m 0;
-
-    will-change: transform;
 
     .content--alt & {
         text-align: right;
     }
 }
 .content__btn {
+    // grid-area: 3/2;
+    grid-row: 3;
+
     position: relative;
 
     display: block;
+    width: fit-content;
+    height: fit-content;
 
     font-size: 18px;
     color: $color_main--darker;
@@ -123,10 +144,8 @@
 
     overflow: hidden;
 
-    float: left;
-
     .content--alt & {
-        float: right;
+        margin-left: auto;
     }
     &::after {
         position: absolute;

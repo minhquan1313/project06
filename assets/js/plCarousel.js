@@ -91,6 +91,8 @@ function my_carousel() {
     window.addEventListener("touchmove", moveCarousel);
     window.addEventListener("touchend", mouseupFunc);
 
+    updateArrowColor();
+
     autoPlay_carousel();
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     function autoPlay_carousel() {}
@@ -147,7 +149,7 @@ function my_carousel() {
         if ((direction == "right" && rightI) || (direction == "left" && leftI)) {
             arrow_animeFunc(this);
             // arrow_anime
-            switch_on_trigger(direction);
+            switch_on_trigger(direction.charAt(0));
         }
     }
     function arrow_animeFunc(ele) {
@@ -191,17 +193,18 @@ function my_carousel() {
         update_currentX();
         update_Item();
 
-        if (direction == "right") {
+        if (direction == "r") {
             orderNext = true;
             orderPrev = false;
 
             if (rightI) {
+                // console.log("rightI", rightI);
                 update_mask_hide();
                 nextEle = rightI.nextElementSibling;
                 nextEle = nextEle.classList.contains("slider__item") ? nextEle : undefined;
                 mouseupFunc(0, true);
             }
-        } else if (direction == "left") {
+        } else {
             orderNext = false;
             orderPrev = true;
 
@@ -213,7 +216,19 @@ function my_carousel() {
             }
         }
     }
+    function updateArrowColor() {
+        if (leftI) {
+            leftArrow.style.filter = ``;
+        } else {
+            leftArrow.style.filter = `grayscale(1)`;
+        }
 
+        if (rightI) {
+            rightArrow.style.filter = ``;
+        } else {
+            rightArrow.style.filter = `grayscale(1)`;
+        }
+    }
     function mousedownFunc(e) {
         // console.log("Mouse down");
         //||e.touches[0].clientY
@@ -241,13 +256,15 @@ function my_carousel() {
             mouseDown = false;
 
             if (orderNext) {
-                changeOrder("next");
+                changeOrder("n");
             } else if (orderPrev) {
-                changeOrder("previous");
+                changeOrder("p");
             }
 
             reset_Items();
             update_mask_show();
+
+            updateArrowColor();
         }
     }
     function update_currentX() {
@@ -347,7 +364,7 @@ function my_carousel() {
         // console.log("Changorder");
         // console.log(nextEle, prevEle);
 
-        if (type == "next") {
+        if (type == "n") {
             centerI.classList.remove("slider__item--center");
             centerI.classList.add("slider__item--left");
 
@@ -366,7 +383,7 @@ function my_carousel() {
 
             update_Item();
             //   }
-        } else if (type == "previous") {
+        } else if (type == "p") {
             centerI.classList.remove("slider__item--center");
             centerI.classList.add("slider__item--right");
 

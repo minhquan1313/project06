@@ -1,0 +1,22 @@
+@import "myVar";
+// PC 80em = 1280px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 80em) {
+}
+// TABLET 37.5em = 600px | 79.9375em = 1279px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 37.5em) and (max-width: 79.9375em), (max-width: 37.4375em) {
+    .loader3-maskAfterLoad {
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: auto;
+
+            transform: translateY(-56%) rotate(90deg) scaleX(-1);
+            transform-origin: bottom left;
+        }
+    }
+}

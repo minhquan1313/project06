@@ -30,9 +30,18 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html {
   font-family: "phucLong", sans-serif;
+  font-size: 100%;
+}
+
+body {
   scroll-behavior: smooth;
+}
+
+body.noScroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 ul {

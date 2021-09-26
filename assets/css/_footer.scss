@@ -46,15 +46,13 @@ footer {
 
         // transition: 0.3s;
 
-        &:hover {
+        // &:hover {
             // transform: scale(1.2);
-        }
+        // }
     }
 }
 .footer__content--logo {
     display: flex;
-    //   grid-column: 2/3;
-    //   grid-row: 1/5;
     padding: 0;
 
     grid-area: 1 / 2 / span 4 / span 1;

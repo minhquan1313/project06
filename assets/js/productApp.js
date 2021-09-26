@@ -328,9 +328,13 @@ const animateMask = {
     durationOpen: 400,
     durationClose: 300,
     delayForTransition: 200,
-    show: function () {
+    clickedBtn: null,
+    show: function (btn) {
         this.opening = true;
-        const pcBtn = document.querySelector(".info__footer-menu"),
+        this.clickedBtn = btn;
+        // const pcBtn = document.querySelector(".info__footer-menu"),
+        //     pcBtnIcon = pcBtn.querySelector("i");
+        const pcBtn = btn,
             pcBtnIcon = pcBtn.querySelector("i");
 
         const mask = document.querySelector(".info__footer-menuMASK"),
@@ -416,7 +420,8 @@ const animateMask = {
     hide: function () {
         // console.log("hiding");
         this.closing = true;
-        const pcBtn = document.querySelector(".info__footer-menu"),
+
+        const pcBtn = this.clickedBtn,
             pcBtnIcon = pcBtn.querySelector("i");
 
         const mask = document.querySelector(".info__footer-menuMASK"),
@@ -473,6 +478,7 @@ const animateMask = {
 
             bound = pcBtnIcon.getBoundingClientRect();
             color = window.getComputedStyle(pcBtnIcon).color;
+
             anime({
                 targets: maskIcon,
 
@@ -893,10 +899,9 @@ function modalControls() {
                     if (!animateMask.closing) {
                         clearInterval(inter);
                         modalController.hide();
-
-                        productController.load(id);
                     }
                 }, 100);
+                productController.load(id);
                 // } else modalController.hide();
                 // }
 
@@ -910,6 +915,9 @@ function menuPopupControl() {
     const pcBtn = document.querySelector(".info__footer-menu"),
         pcBtnIcon = pcBtn.querySelector("i");
 
+    const mobileBtn = document.querySelector(".app-nav--menu"),
+        mobileBtnIcon = mobileBtn.querySelector("i");
+
     let firstTime = true;
 
     const mask = document.querySelector(".info__footer-menuMASK"),
@@ -918,10 +926,11 @@ function menuPopupControl() {
     const animationDura = 500;
 
     pcBtn.onclick = clickFunc;
-
+    mobileBtn.onclick = clickFunc;
     // pcBtn.click();
 
     function clickFunc() {
+        // console.log("this", this);
         if (firstTime) {
             modalController.reset_hide();
 
@@ -947,7 +956,7 @@ function menuPopupControl() {
         menu.classList.remove("show");
 
         // animateMask.s
-        animateMask.show();
+        animateMask.show(this);
         // animateMask();
 
         setTimeout(() => {

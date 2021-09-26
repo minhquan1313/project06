@@ -2,9 +2,9 @@
 // Start FONT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @font-face {
     font-family: "phucLong";
-    src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot");
-    src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"),
-        url("/project06/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot");
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"),
+        url("/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
     font-style: normal;
     font-weight: normal;
 }
@@ -36,10 +36,17 @@
 
     // outline: 10px solid red;
 }
-body {
+html {
     font-family: $plFont;
-
+    font-size: 100%;
+}
+body {
     scroll-behavior: smooth;
+    &.noScroll {
+        height: 100vh;
+
+        overflow: hidden;
+    }
 }
 ul {
     list-style-type: none;

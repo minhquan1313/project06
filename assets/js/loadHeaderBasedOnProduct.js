@@ -14,8 +14,14 @@ function loadHeader() {
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
 
     const __productUrl = "/project06/products/index.html";
-    const headerNav = document.querySelector(".main .header__nav .header__nav_items");
+    const headerNav = document.querySelector(".main .header__nav_items");
+    const headerNavMb = document.querySelector(".main .navMobile__side-items");
+    // console.log('headerNavMb',headerNavMb);
+
     headerNav.innerHTML = ``;
+    if (headerNavMb) {
+        headerNavMb.innerHTML = ``;
+    }
 
     const __icon = {
         Specialty: `<i class="icofont-coffee-alt"></i>`,
@@ -57,7 +63,7 @@ function loadHeader() {
             // `
             //     )
             //     .join("");
-            let subHtml = [...subs].map((r) => `<li class="nav_item__subItem"><a href="${__productUrl}?cate=${i}&cate_sub=${r}" class="a--mask"></a>${r}</li>`).join("");
+            let subHtml = [...subs].map((r) => `<li class="nav_item__subItem"><a href="${__productUrl}?cate=${i}&cate_sub=${r}" class="a--mask"></a><p>${r}</p></li>`).join("");
             // console.log(subHtml);
 
             li.classList.add("header__nav_item", "header__nav_item--hasSub");
@@ -67,6 +73,7 @@ function loadHeader() {
             //     <div class="nav_item__name">
             //         <a href="${__productUrl}?cate=${i}" class="a--mask"></a>
             //         <p>${i}</p>
+            //         <div class="navMobile__Arr"><i class="icofont-long-arrow-right"></i></div>
             //         <ul class="nav_item__subItems">
             //             ${subHtml}
             //         </ul>
@@ -74,10 +81,19 @@ function loadHeader() {
             // </div>
             //     `;
 
-            li.innerHTML = `<div class="nav_item__wrapper"><div class="nav_item__icon">${__icon[i]}</div><div class="nav_item__name"><a href="${__productUrl}?cate=${i}" class="a--mask"></a><p>${i}</p><ul class="nav_item__subItems">${subHtml}</ul></div></div>`;
+            li.innerHTML = `<div class="nav_item__wrapper"><div class="nav_item__icon">${__icon[i]}</div><div class="nav_item__name"><a href="${__productUrl}?cate=${i}" class="a--mask"></a><p>${i}</p><button class="navMobile__Arr"><i class="icofont-long-arrow-right"></i></button><ul class="nav_item__subItems">${subHtml}</ul></div></div>`;
+
+            // let an = li.querySelectorAll("a");
+            // [...an].forEach((r) => (r.href = "javascript:;"));
 
             // console.log("li", li);
             headerNav.appendChild(li);
+            if (headerNavMb) {
+                headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+            }
         } else {
             // <li class="header__nav_item">
             // <a href="/products/index.html?cate=" class="nav_item__wrapper">
@@ -94,7 +110,17 @@ function loadHeader() {
             //         <div class="nav_item__name"><p>${i}</p></div>
             //     </a>
             // `;
+
+            // let an = li.querySelectorAll("a");
+            // [...an].forEach((r) => (r.href = "javascript:;"));
+
             headerNav.appendChild(li);
+            if (headerNavMb) {
+                headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+                // headerNavMb.appendChild(li.cloneNode(true));
+            }
         }
 
         // console.log(itemInCategory[i]);

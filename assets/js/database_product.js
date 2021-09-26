@@ -5,9 +5,9 @@ function getDataProduct() {
 
     const displayAs = {
         currency: "$",
-        type: "Type:",
-        sweetness: "Sweetness Levels:",
-        extra: "Extra:",
+        type: "Available types:",
+        sweetness: "Sweetness levels:",
+        extra: "Available extras:",
         free: "Free",
         staticDescription: "Product default description. Product default description. Product default description.",
         staticShortDescription: "Some short description. Some short description. ",
@@ -39,7 +39,7 @@ function getDataProduct() {
                 /**
                  * Must have all these two, if you are using your img, in your source, it will use
                  * the staticImgUrl above. For ex:
-                 * staticImgUrl = "/project06/img/product/"
+                 * staticImgUrl = "/img/product/"
                  * cover: "teaImg.jpg"
                  * ==> /img/product/teaImg.jpg
                  *
@@ -1483,8 +1483,8 @@ function getDataProduct() {
                 name: "sm",
             },
             imgs: {
-                cover: "/project06/assets/img/products/Sea salt Jasmine.jpg",
-                png: "/project06/assets/img/products/Sea salt Jasmine.png",
+                cover: "/assets/img/products/Sea salt Jasmine.jpg",
+                png: "/assets/img/products/Sea salt Jasmine.png",
                 noStaticCover: true,
                 noStaticPng: true,
             },
