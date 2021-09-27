@@ -8,7 +8,7 @@ function generateSliders() {
 
     let dot = document.createElement("div");
     dot.classList.add("dot");
-    dot.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 42"><path d="M72.12 3.089l51.635 16.943c1.047.343 1.694.694 2.046.969-.352.274-.999.625-2.046.969L72.12 38.911C69.968 39.617 67.029 40 64 40s-5.968-.383-8.12-1.089L4.245 21.969c-1.047-.343-1.694-.694-2.046-.969.353-.274 1-.625 2.046-.969L55.88 3.089C58.032 2.383 60.971 2 64 2s5.968.383 8.12 1.089zm53.931 18.153zm-.007-.471zM1.949 20.759zm.007.471z"/></svg>`;
+    // dot.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 42"><path d="M72.12 3.089l51.635 16.943c1.047.343 1.694.694 2.046.969-.352.274-.999.625-2.046.969L72.12 38.911C69.968 39.617 67.029 40 64 40s-5.968-.383-8.12-1.089L4.245 21.969c-1.047-.343-1.694-.694-2.046-.969.353-.274 1-.625 2.046-.969L55.88 3.089C58.032 2.383 60.971 2 64 2s5.968.383 8.12 1.089zm53.931 18.153zm-.007-.471zM1.949 20.759zm.007.471z"/></svg>`;
     //     dot.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 42">
     //   <path
     //     d="M72.12 3.089l51.635 16.943c1.047.343 1.694.694 2.046.969-.352.274-.999.625-2.046.969L72.12 38.911C69.968 39.617 67.029 40 64 40s-5.968-.383-8.12-1.089L4.245 21.969c-1.047-.343-1.694-.694-2.046-.969.353-.274 1-.625 2.046-.969L55.88 3.089C58.032 2.383 60.971 2 64 2s5.968.383 8.12 1.089zm53.931 18.153zm-.007-.471zM1.949 20.759zm.007.471z"
@@ -124,7 +124,7 @@ function my_carousel2() {
         // console.log("arguments", arguments);
         // console.log("arguments", typeof arguments);
         // disableFeature();
-        [...arguments].forEach((r) => {
+        [...arguments].forEach((r, i) => {
             if (r) {
                 // let opa = r.classList.contains("active") ? 1 : 0;
                 r.style.transition = baseAnimateDur + "ms";
@@ -142,7 +142,7 @@ function my_carousel2() {
 
                 r.style.opacity = "";
 
-                setTimeout(() => {
+                timeOutTriple[i] = setTimeout(() => {
                     r.removeAttribute("style");
                 }, baseAnimateDur);
             }
@@ -181,6 +181,10 @@ function my_carousel2() {
         } else {
             backPos(nextTarget, curTarget, prevTarget);
         }
+        // disableFeature();
+
+        // clearTimeout(featureTimeOut);
+        // featureTimeOut = setTimeout(enableFeature, baseAnimateDur);
     }
 
     function updateDot() {
@@ -193,6 +197,11 @@ function my_carousel2() {
     function dir(percent) {
         return percent <= -baseMinForceSide ? "r" : percent >= baseMinForceSide ? "l" : "m";
     }
+    function remove3Transition() {
+        curTarget.style.transition = "";
+        if (nextTarget) nextTarget.style.transition = "";
+        if (prevTarget) prevTarget.style.transition = "";
+    }
     function mDown(e) {
         // console.log("mDown");
         // if (animeAnimate) animeAnimate.pause();
@@ -201,12 +210,16 @@ function my_carousel2() {
 
         down = true;
         startX = e.x || e.touches[0].clientX;
+        startY = e.y || e.touches[0].clientY;
         updateTargets();
         lastActiveSlider = null;
         // console.log("curTarget", curTarget);
         // console.log("nextTarget", nextTarget);
         // console.log("prevTarget", prevTarget);
         targetWith = e.target.offsetWidth;
+
+        timeOutTriple.forEach(clearTimeout);
+        remove3Transition();
     }
     function mMove(e) {
         // console.log("mMove");
@@ -214,6 +227,25 @@ function my_carousel2() {
             eX = e.x || e.touches[0].clientX;
             diff = eX - startX;
             diffPercent = (diff / targetWith) * baseFast;
+
+            if (!checkedY) {
+                eY = e.y || e.touches[0].clientY;
+
+                let differY = startY - eY;
+
+                if (differY != 0 && diff != 0) {
+                    if (Math.abs(differY) > Math.abs(diff)) {
+                        checkedY = true;
+                        scrollDisabled = false;
+                        down = false;
+                    } else {
+                        checkedY = true;
+                        scrollDisabled = true;
+                        plScroll.disable();
+                        // plScroll.enable();
+                    }
+                }
+            }
 
             // console.log("diff", diff, "targetWith", targetWith, "diffPercent", diffPercent);
             // console.log(1 - diffPercent);
@@ -245,13 +277,18 @@ function my_carousel2() {
     }
     function mUp(e) {
         // console.log("mUp");
-
-        // let direction = dir(diffPercent);
-        autoCarousel(baseSpeedAutoCarousel);
-        if (down) {
+        checkedY = false;
+        if (down || scrollDisabled) {
             lastActiveSlider = curTarget;
             refreshSlider(dir(diffPercent));
         }
+
+        if (scrollDisabled) {
+            scrollDisabled = false;
+            plScroll.enable();
+        }
+        // let direction = dir(diffPercent);
+        autoCarousel(baseSpeedAutoCarousel);
         down = false;
 
         // console.log("diffPercent", diffPercent);
@@ -313,14 +350,14 @@ function my_carousel2() {
         lastActiveSlider = curTarget;
         refreshSlider(direction.charAt(0));
     }
-    // function disableFeature() {
-    //     wrapper.removeEventListener("mousedown", mDown);
-    //     wrapper.removeEventListener("touchstart", mDown);
-    // }
-    // function enableFeature() {
-    //     wrapper.addEventListener("mousedown", mDown);
-    //     wrapper.addEventListener("touchstart", mDown);
-    // }
+    function disableFeature() {
+        wrapper.removeEventListener("mousedown", mDown);
+        wrapper.removeEventListener("touchstart", mDown);
+    }
+    function enableFeature() {
+        wrapper.addEventListener("mousedown", mDown);
+        wrapper.addEventListener("touchstart", mDown);
+    }
     function autoCarousel(inter) {
         clearInterval(autoCarouselInter);
         autoCarouselInter = setInterval(() => {
@@ -338,22 +375,23 @@ function my_carousel2() {
         arrows = slider.querySelector(".arrowNav");
 
     const baseFast = 2;
-    const baseMinForceSide = 0.2;
+    const baseMinForceSide = 0.3;
     const baseAnimateDur = 800;
     const baseSpeedAutoCarousel = 5000;
 
-    let activeSlider, lastActiveSlider;
+    let lastActiveSlider;
     let down = false,
         nextTarget,
         prevTarget,
         curTarget,
         targetWith,
         arrow_anime,
-        autoCarouselInter;
+        autoCarouselInter,
+        timeOutTriple = [];
 
     let lastDot;
 
-    let diff, diffPercent, startX, eX;
+    let diff, diffPercent, startX, eX, startY, eY, checkedY, scrollDisabled;
 
     updateCurrent(sliders[0]);
 

@@ -7,7 +7,14 @@ Object.prototype._product_carousel = function () {
 
     let isDownProduct = false;
 
-    let startX, differ, toChange, eX, lastEX;
+    let startX,
+        differ,
+        toChange,
+        eX,
+        lastEX,
+        startY,
+        eY,
+        checkedY = false;
     let currentX;
 
     let __parent;
@@ -19,6 +26,8 @@ Object.prototype._product_carousel = function () {
         animeScroll,
         animeScrollTime = 1000,
         smoothScrollStrength = 20;
+
+    let scrollDisabled = false;
 
     let addClassTimeOut;
 
@@ -52,6 +61,7 @@ Object.prototype._product_carousel = function () {
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
 
     function productMouseDown(e) {
+        // console.log("----");
         if (animeScroll) animeScroll.pause();
         isDownProduct = true;
 
@@ -65,9 +75,15 @@ Object.prototype._product_carousel = function () {
         currentX = parseInt(ele.style.marginLeft) || 0;
         startX = e.x || e.touches[0].clientX;
         lastEX = startX;
+        startY = e.y || e.touches[0].clientY;
     }
     function productMouseUp() {
         // console.log("Mouse up");
+        checkedY = false;
+        if (scrollDisabled) {
+            scrollDisabled = false;
+            plScroll.enable();
+        }
 
         if (!isDownProduct) return;
         else {
@@ -104,6 +120,28 @@ Object.prototype._product_carousel = function () {
             eX = e.x || e.touches[0].clientX;
 
             differ = startX - eX;
+            // console.log("differ", differ);
+
+            if (!checkedY) {
+                eY = e.y || e.touches[0].clientY;
+
+                let differY = startY - eY;
+
+                if (differY != 0 && differ != 0) {
+                    if (Math.abs(differY) > Math.abs(differ)) {
+                        checkedY = true;
+                        scrollDisabled = false;
+                        isDownProduct = false;
+                    } else {
+                        checkedY = true;
+                        scrollDisabled = true;
+                        plScroll.disable();
+                        // plScroll.enable();
+                    }
+                }
+
+                // console.log("differY", differY);
+            }
 
             toChange = differ - currentX;
             if (toChange >= 0 && toChange <= maxScroll) {
@@ -427,8 +465,8 @@ const animateMask = {
         const mask = document.querySelector(".info__footer-menuMASK"),
             maskIcon = mask.querySelector("i");
 
-        const menu = document.querySelector(".modalFullMenu"),
-            menuIcon = menu.querySelector("i");
+        const menu = document.querySelector(".modalFullMenu");
+            // menuIcon = menu.querySelector("i");
 
         document.body.classList.remove("modal--overlay");
 
@@ -804,7 +842,7 @@ function modalControls() {
     modalController.modal_content.addEventListener("mouseup", productUp);
 
     // modalController.modal_content.addEventListener("mousemove", (e) => {
-    //     console.log(e.which);
+    // console.log(e.which);
     // });
     // modalController.modal_content.addEventListener("click", productClick);
 
@@ -844,7 +882,7 @@ function modalControls() {
 
             let isMouse = e.button ? (e.button == 0 ? true : false) : true;
             if (product && isMouse) {
-                console.log("true");
+                // console.log("true");
                 isDown = true;
 
                 lastEx = e.x || e.touches[0].clientX;
@@ -899,9 +937,11 @@ function modalControls() {
                     if (!animateMask.closing) {
                         clearInterval(inter);
                         modalController.hide();
+
+                        productController.load(id);
+                        scrollToTopApp();
                     }
                 }, 100);
-                productController.load(id);
                 // } else modalController.hide();
                 // }
 
@@ -912,18 +952,18 @@ function modalControls() {
     }
 }
 function menuPopupControl() {
-    const pcBtn = document.querySelector(".info__footer-menu"),
-        pcBtnIcon = pcBtn.querySelector("i");
+    const pcBtn = document.querySelector(".info__footer-menu");
+    // pcBtnIcon = pcBtn.querySelector("i");
 
-    const mobileBtn = document.querySelector(".app-nav--menu"),
-        mobileBtnIcon = mobileBtn.querySelector("i");
+    const mobileBtn = document.querySelector(".app-nav--menu");
+    // mobileBtnIcon = mobileBtn.querySelector("i");
 
     let firstTime = true;
 
-    const mask = document.querySelector(".info__footer-menuMASK"),
-        maskIcon = mask.querySelector("i");
+    // const mask = document.querySelector(".info__footer-menuMASK");
+    // maskIcon = mask.querySelector("i");
 
-    const animationDura = 500;
+    // const animationDura = 500;
 
     pcBtn.onclick = clickFunc;
     mobileBtn.onclick = clickFunc;
@@ -1147,7 +1187,7 @@ function loadFirstProduct() {
     // console.log(Object.keys(params)[0]);
 
     // for (let param of params) {
-    //     console.log(param);
+    // console.log(param);
     // }
     // console.log("id", id);
 
@@ -1184,6 +1224,19 @@ function updateAvailableArrows() {
         arrowL.style.filter = "grayscale(1)";
         arrowR.style.filter = "grayscale(1)";
     }
+}
+function scrollToTopApp() {
+    anime({
+        targets: productController.app,
+        scrollTop: [productController.app.scrollTop, 0],
+        easing: "easeOutCubic",
+
+        duration: 400,
+        // update: (e) => {
+        // console.log(productController.app.scrollTop);
+        // },
+        // duration: 500,
+    });
 }
 function arrowNavControl() {
     function arrow_animeFunc(ele) {
@@ -1270,6 +1323,27 @@ function arrowNavControl() {
 
                 productController.load(prev.id);
             }
+
+            // console.log("scroll top", document.querySelector(".app").scrollTop);
+            scrollToTopApp();
+
+            // document.querySelector(".app").scrollTop = 0;
+
+            // document.querySelector(".app").scroll({
+            //     top: 0,
+            //     left: 0,
+            //     behavior: "smooth",
+            // });
+
+            // document.querySelector(".app").scrollBy({
+            //     top: 0, // could be negative value
+            //     left: 0,
+            //     behavior: "smooth",
+            // });
+
+            // document.querySelector(".app").scrollIntoView({
+            //     behavior: "smooth",
+            // });
 
             return !0;
         } else return !1;

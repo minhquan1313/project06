@@ -376,8 +376,9 @@
 
                     <div class="navMobile__side">
                         <div class="navMobile__side-search">
-                            <div class="header__search_wrapper">
+                            <form action="javascript:;" class="header__search_wrapper">
                                 <input type="text" required class="header__search_input" />
+                                <button type="reset" class="header__search_reset"><i class="icofont-close-line-circled"></i></button>
                                 <div class="input_mask"></div>
                                 <p class="search_placeholder">Which drink are you looking for?</p>
                                 <div class="header__search_result">
@@ -387,7 +388,7 @@
                                     <div class="result__body">
                                         <ul class="result__body_items">
                                             <!-- Product -->
-                                            <li class="result__body_item result__body_item--loading">
+                                            <!-- <li class="result__body_item result__body_item--loading">
                                                 <a href="javascript:;" class="result__body_item_wrapper">
                                                     <div class="result_item_cover">
                                                         <img src="/assets/img/products/Sea salt Jasmine.jpg" alt="" />
@@ -404,10 +405,10 @@
                                                         <p class="item_info__price">$5 - $10</p>
                                                     </div>
                                                 </a>
-                                            </li>
+                                            </li> -->
 
                                             <!-- Can't find -->
-                                            <li class="result__body_item result__body_item--noClick">
+                                            <!-- <li class="result__body_item result__body_item--noClick">
                                                 <div class="result__body_item_wrapper">
                                                     <div class="result_item_cover">
                                                         <div class="icon--error"></div>
@@ -416,10 +417,10 @@
                                                         <p class="item_info__name item_info__name--error">Sorry, found nothing</p>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> -->
 
                                             <!-- Searching / Type something -->
-                                            <li class="result__body_item result__body_item--noClick">
+                                            <!-- <li class="result__body_item result__body_item--noClick">
                                                 <div class="result__body_item_wrapper">
                                                     <div class="result_item_cover">
                                                         <div class="result_item_loader"></div>
@@ -428,15 +429,15 @@
                                                         <p class="item_info__name item_info__name--error">Type something...</p>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                         <ul class="navMobile__side-items">
-                            <li class="header__nav_item header__nav_item--hasSub toSide">
+                            <!-- <li class="header__nav_item header__nav_item--hasSub toSide">
                                 <div class="nav_item__wrapper">
                                     <div class="nav_item__icon"><i class="icofont-coffee-alt"></i></div>
                                     <div class="nav_item__name">
@@ -616,8 +617,7 @@
                                     <div class="nav_item__icon"><i class="icofont-beans"></i></div>
                                     <div class="nav_item__name"><p>Blended Non-Caffein</p></div>
                                 </a>
-                            </li>
-                            <!-- <li class="navMobile__side-item"></li> -->
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -1227,19 +1227,19 @@
                             <li class="footer__content footer__content--social">
                                 <ul class="footer__socials">
                                     <li class="footer__social" style="--bg: #0164e1">
-                                        <a href="javascript:;" target="_blank" rel="noopener noreferrer">
+                                        <a href="javascript:;">
                                             <i class="icofont-facebook"></i>
                                         </a>
                                     </li>
 
                                     <li class="footer__social" style="--bg: #fa1d53">
-                                        <a href="javascript:;" target="_blank" rel="noopener noreferrer">
+                                        <a href="javascript:;">
                                             <i class="icofont-instagram"></i>
                                         </a>
                                     </li>
 
                                     <li class="footer__social" style="--bg: #50abf1">
-                                        <a href="javascript:;" target="_blank" rel="noopener noreferrer">
+                                        <a href="javascript:;">
                                             <i class="icofont-twitter"></i>
                                         </a>
                                     </li>
@@ -1256,6 +1256,7 @@
         <!-- add-on -->
         <script src="/assets/js/addOns/anime.min.js"></script>
         <script src="/assets/js/addOns/noframework.waypoints.min.js"></script>
+        <script src="/assets/js/scrollController.min.js"></script>
 
         <!-- loader -->
         <!-- <script src="/assets/js/loader.js"></script> -->

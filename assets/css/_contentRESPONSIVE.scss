@@ -12,7 +12,10 @@
 @media (min-width: 37.5em) and (max-width: 62.4375em) {
     // 600 -> 999
     .content {
-        padding: $spacing_m 0;
+        padding-top: $spacing_l;
+        // padding: $spacing_m 0;
+    }
+    .content--alt {
     }
     .content__inner {
         display: grid;

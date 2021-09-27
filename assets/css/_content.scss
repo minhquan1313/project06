@@ -1,7 +1,7 @@
 .content {
     position: relative;
     z-index: 1;
-    padding: $spacing_l * 2 0;
+    padding: $spacing_l * 3 0;
 }
 .blurCircle {
     position: absolute;
@@ -111,7 +111,8 @@
     // grid-area: 2/2;
     grid-row: 2;
 
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.7;
     padding: $spacing_m 0;
 
     .content--alt & {

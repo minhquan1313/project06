@@ -3,6 +3,8 @@ $scale: 2.6;
 
 .slider {
     user-select: none;
+
+    // padding-bottom: $spacing_l*2;
     // overflow: hidden;
 }
 .slider__items {
@@ -46,7 +48,7 @@ $scale: 2.6;
 
             object-position: center;
 
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 30px 30px;
         }
     }
 
@@ -104,7 +106,7 @@ $scale: 2.6;
 .dots {
     position: absolute;
     left: 50%;
-    bottom: -8px;
+    bottom: 10px;
 
     transform: translateX(-50%);
     //   background: #000;
@@ -114,7 +116,28 @@ $scale: 2.6;
 .dot {
     position: relative;
     // width: 20px;
-    height: 8px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+
+    background: transparent;
+
+    border: 1px solid #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+    &::after {
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+
+        background: #fff;
+
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+        transition: 0.3s;
+
+        content: "";
+    }
 
     & + & {
         margin-left: $spacing_m;
@@ -129,26 +152,25 @@ $scale: 2.6;
 
     // transition: 0.3s;
 
-    > svg {
-        // position: absolute;
-        // inset: 0;
+    // > svg {
+    //     height: 100%;
+    //     width: auto;
 
-        height: 100%;
-        width: auto;
+    //     fill: transparent;
 
-        fill: transparent;
+    //     stroke: $color_main--light;
+    //     stroke-width: 4;
 
-        stroke: $color_main--light;
-        stroke-width: 4;
-
-        transition: 0.3s;
-    }
-    &.active
-  // ,  &:hover
-    {
-        svg {
-            fill: $color_main;
+    //     transition: 0.3s;
+    // }
+    &.active {
+        &::after {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
+
+        // svg {
+        //     fill: $color_main;
+        // }
     }
 }
 
@@ -159,6 +181,8 @@ $scale: 2.6;
     left: 0;
     right: 0;
     z-index: 1;
+
+    display: none;
 }
 .arrowNav--left,
 .arrowNav--right {

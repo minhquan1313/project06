@@ -11,14 +11,15 @@ $header_height: 50px;
         width: 34px;
     }
     .dots {
-        bottom: -6px;
+        // bottom: -6px;
         // bottom: 5%;
     }
     .dot {
-        height: 6px;
+        // height: 6px;
         // margin: 0 16px;
     }
     .slider__item--loading .pt img {
+        // border-bottom-left-radius: 0;
         border-radius: 0;
     }
 }
@@ -29,14 +30,20 @@ $header_height: 50px;
         display: none;
     }
     .dots {
-        bottom: 0px;
-        // bottom: 5%;
+        // bottom: 0px;
+        bottom: 4px;
     }
     .dot {
-        height: 4px;
+        width: 8px;
+        height: 8px;
+
+        & + & {
+            margin-left: 10px;
+        }
         // margin: 0 16px;
     }
     .slider__item--loading .pt img {
+        // border-bottom-left-radius: 0;
         border-radius: 0;
     }
 }

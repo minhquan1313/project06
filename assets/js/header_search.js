@@ -11,7 +11,8 @@ function header_searchHandler() {
         pcResultBox = document.querySelector(".result__body_items");
 
     const mobileSearch = document.querySelector(".navMobile__side .header__search_input"),
-        mobileResultBox = document.querySelector(".navMobile__side  .result__body_items");
+        mobileResultBox = document.querySelector(".navMobile__side  .result__body_items"),
+        mobileReset = document.querySelector(".header__search_reset");
 
     // console.log("mobileResultBox", mobileResultBox);
     // let eleTrigger;
@@ -54,6 +55,11 @@ function header_searchHandler() {
     if (mobileSearch) {
         mobileSearch.addEventListener("keydown", keydownFunc);
         mobileSearch.addEventListener("keyup", searchFunc);
+
+        mobileReset.addEventListener("click", (e) => {
+            resetSearchResult();
+            resultToWeb(htmlDefault("wait"));
+        });
     }
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
     function keydownFunc(e) {

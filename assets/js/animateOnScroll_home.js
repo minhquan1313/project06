@@ -12,8 +12,9 @@ function _myDefaultWp(ele, callback) {
                         callback();
                     }
                 },
+                offset: window.innerHeight - ele.getBoundingClientRect().height,
                 // offset: window.innerHeight - ele.offsetHeight,
-                offset: `${((window.innerHeight * 2) / 3 / window.innerHeight) * 100}%`,
+                // offset: `${((window.innerHeight * 2) / 3 / window.innerHeight) * 100}%`,
             });
         }
     }, 100);
@@ -43,7 +44,7 @@ function setStuff() {
         // console.log("refresh", new Date());
     });
     // _+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
-    const headerIcons = document.querySelectorAll(".header__nav_item");
+    const headerIcons = document.querySelectorAll(".header__nav .header__nav_item");
     const slider = document.querySelector(".slider");
     const sect1 = document.querySelector(".content");
     const sect2 = document.querySelector(".content--alt");
@@ -137,6 +138,9 @@ function setStuff() {
             // r.querySelector("svg").classList.add("animate");
             circleShape[i].style.animation = `animateZI 1s forwards`;
 
+            // console.log("r", r);
+            // console.log(window.innerHeight, r.offsetHeight, window.innerHeight - r.offsetHeight, window.innerHeight - r.getBoundingClientRect().height);
+
             setTimeout(() => {
                 rmStyle(r);
                 rmStyle(circleShape[i]);
@@ -177,7 +181,8 @@ function setStuff() {
 
     des.forEach((r, i) => {
         _myDefaultWp(r, () => {
-            r.style.transformOrigin = "top";
+            // r.style.transformOrigin = "top";
+
             // let ele = r;
             // anime({
             //     targets: r,
@@ -199,20 +204,84 @@ function setStuff() {
             // });
 
             if (i == 0) {
-                title[i].style.animation = `animateLsI-R 1.2s forwards`;
-                r.style.animation = `animateLsI-R 1s .2s forwards`;
-                btn[i].style.animation = `animateLsI-R 1s .4s forwards`;
+                r.style.animation = `animateLsI-R 1s forwards`;
+                // r.style.animation = `animateLsI-R 1s .2s forwards`;
             } else {
-                title[i].style.animation = `animateLsI-L 1.2s forwards`;
-                r.style.animation = `animateLsI-L 1s .2s forwards`;
-                btn[i].style.animation = `animateLsI-L 1s .4s forwards`;
+                r.style.animation = `animateLsI-L 1s forwards`;
+                // r.style.animation = `animateLsI-L 1s .2s forwards`;
             }
 
             setTimeout(() => {
                 rmStyle(r);
-                rmStyle(title[i]);
-                rmStyle(btn[i]);
             }, 1250);
+        });
+    });
+    title.forEach((r, i) => {
+        _myDefaultWp(r, () => {
+            // let ele = r;
+            // anime({
+            //     targets: r,
+            //     opacity: { value: [0, 1], easing: "easeOutSine" },
+            //     // skewX: { value: [negative * 180, 0], duration: 1400 },
+
+            //     scaleY: [0, 1],
+            //     // translateX: [`${-negative}00%`, 0],
+            //     translateY: ["-100%", 0],
+
+            //     // delay: 400,
+
+            //     easing: "easeOutBack",
+            //     duration: 700,
+
+            //     complete: () => {
+            //         rmStyle(r);
+            //     },
+            // });
+
+            if (i == 0) {
+                r.style.animation = `animateLsI-R 1.2s forwards`;
+            } else {
+                r.style.animation = `animateLsI-L 1.2s forwards`;
+            }
+
+            setTimeout(() => {
+                rmStyle(r);
+            }, 1250);
+        });
+    });
+    btn.forEach((r, i) => {
+        _myDefaultWp(r, () => {
+            // let ele = r;
+            // anime({
+            //     targets: r,
+            //     opacity: { value: [0, 1], easing: "easeOutSine" },
+            //     // skewX: { value: [negative * 180, 0], duration: 1400 },
+
+            //     scaleY: [0, 1],
+            //     // translateX: [`${-negative}00%`, 0],
+            //     translateY: ["-100%", 0],
+
+            //     // delay: 400,
+
+            //     easing: "easeOutBack",
+            //     duration: 700,
+
+            //     complete: () => {
+            //         rmStyle(r);
+            //     },
+            // });
+
+            if (i == 0) {
+                // r.style.animation = `animateLsI-R 1s .4s forwards`;
+                r.style.animation = `animateLsI-R 1s forwards`;
+            } else {
+                // r.style.animation = `animateLsI-L 1s .4s forwards`;
+                r.style.animation = `animateLsI-L 1s forwards`;
+            }
+
+            setTimeout(() => {
+                rmStyle(r);
+            }, 1450);
         });
     });
     // --------------------------------------------------------------------------------------------
@@ -245,7 +314,7 @@ function setStuff() {
 }
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var canRunAnimate = false;
-    // b=3;
+// b=3;
 // setTimeout(() => {
 //     b = 3;
 // }, 0);

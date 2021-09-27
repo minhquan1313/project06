@@ -36,6 +36,10 @@ footer {
 
     font-size: 15px;
 
+    > a {
+        font-size: 20px;
+    }
+
     &:not(.footer__content--social) a > i {
         margin-right: $spacing_ss;
     }
@@ -47,7 +51,7 @@ footer {
         // transition: 0.3s;
 
         // &:hover {
-            // transform: scale(1.2);
+        // transform: scale(1.2);
         // }
     }
 }
@@ -186,5 +190,5 @@ footer {
 
     color: #fff;
 
-    font-size: 15px;
+    font-size: 12px;
 }

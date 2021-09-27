@@ -176,7 +176,7 @@ $header_height: 50px;
         &:nth-child(1) {
             width: 60%;
 
-            .navMobile__trigger.active & {
+            .navMobile.active & {
                 // transform: rotate(30deg);
                 width: 100%;
                 transform: translateY(9px) rotate(-30deg);
@@ -185,14 +185,14 @@ $header_height: 50px;
         &:nth-child(2) {
             width: 100%;
 
-            .navMobile__trigger.active & {
+            .navMobile.active & {
                 transform: rotate(30deg);
             }
         }
         &:nth-child(3) {
             width: 60%;
 
-            .navMobile__trigger.active & {
+            .navMobile.active & {
                 width: 100%;
                 transform: translateY(-9px) rotate(-30deg);
                 // transform: rotate(30deg);
@@ -222,7 +222,7 @@ $header_height: 50px;
 
         background: rgba(255, 255, 255, 1);
 
-        .navMobile__trigger.active ~ & {
+        .navMobile.active & {
             transform: translateX(0);
 
             pointer-events: all;
@@ -265,11 +265,13 @@ $header_height: 50px;
         top: 70px;
         left: 0;
         right: 0;
-        bottom: 0;
+        bottom: 100%;
 
         // height: calc(100vh - #{$header_height * 2} - 42px - #{$spacing_s});
 
         box-shadow: none !important;
+
+        transform: scaleY(1);
         // left: -$spacing_s;
         // right: -$spacing_s;
 
@@ -278,10 +280,15 @@ $header_height: 50px;
         border-radius: 0;
 
         width: auto;
+
+        transition: 0.5s;
+
+        overflow: hidden;
     }
     .header__search_input {
         transition: 0.3s;
         font-size: 16px;
+        padding-right: 50px;
 
         &:focus,
         &:valid {
@@ -298,12 +305,39 @@ $header_height: 50px;
                 box-shadow: 2px 4px 8px $shadow12;
             }
             ~ .header__search_result {
-                transform: scaleY(1);
+                // transform: scaleY(1);
+                bottom: 0;
             }
         }
         &:valid ~ .search_placeholder {
             top: 0;
             opacity: 0;
+        }
+    }
+    .header__search_reset {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+
+        opacity: 0;
+
+        width: 50px;
+
+        padding-top: 4px;
+
+        // margin-right: $spacing_m;
+
+        color: $color_main--darker;
+        background: transparent;
+        font-size: 20px;
+
+        border: none;
+        transition: 0.3s;
+
+        .header__search_input:valid ~ & {
+            opacity: 1;
         }
     }
     .header__search_wrapper {
@@ -328,10 +362,18 @@ $header_height: 50px;
     }
     .result__header {
         height: 42px;
+
+        padding-top: 0;
+
         display: flex;
         > p {
             margin: auto;
+            font-size: 14px;
         }
+    }
+    .item_info__name,
+    .item_info__price {
+        font-size: 14px;
     }
     .result__body_item_wrapper {
         padding: $spacing_ss 0;
@@ -351,11 +393,7 @@ $header_height: 50px;
         // height: calc(100% - #{$header_height * 2} - 42px - #{$spacing_s * 3});
         // height: 100%;
     }
-    .result__header > p,
-    .item_info__name,
-    .item_info__price {
-        font-size: 14px;
-    }
+
     .item_info__price {
         padding-top: $spacing_ss;
     }
@@ -515,6 +553,32 @@ $header_height: 50px;
             }
         }
         //     }
+
+        .navMobile.active & {
+            // --t: 0.4s;
+            // animation: mobilePopIn var(--t) var(--d) ease-out;
+            // transition: 0.3s 0.4s;
+            // @keyframes hideBefore {
+            //     to {
+            //         opacity: 0;
+            //     }
+            // }
+            // @keyframes showAfter {
+            //     to {
+            //         opacity: 1;
+            //     }
+            // }
+            // @keyframes mobilePopIn {
+            //     0% {
+            //         opacity: 0;
+            //         transform: translateX(100%);
+            //     }
+            //     100% {
+            //         opacity: 1;
+            //         transform: translateX(0);
+            //     }
+            // }
+        }
     }
     .navMobile__Arr {
         position: absolute;
@@ -664,12 +728,12 @@ $header_height: 50px;
         // &::after {
         // }
 
-        // &:hover {
-        //     transform: none;
-        // }
-        // &:active {
-        //     transform: scale(0.96);
-        // }
+        &:hover {
+            transform: none;
+        }
+        &:active {
+            transform: none;
+        }
     }
     // End Nav mobile -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 }

@@ -35,6 +35,8 @@ function loadHeader() {
     const categories = new Set(_product_items.map((r) => r.category));
     const itemInCategory = separateItem();
 
+    let time = 0;
+
     for (let i of categories) {
         let hasSub = !!itemInCategory[i].find((r) => r.category_sub);
 
@@ -67,6 +69,7 @@ function loadHeader() {
             // console.log(subHtml);
 
             li.classList.add("header__nav_item", "header__nav_item--hasSub");
+            li.style.cssText = `--d:0.${time++}s`;
             //     li.innerHTML = `
             // <div class="nav_item__wrapper">
             //     <div class="nav_item__icon">${__icon[i]}</div>
@@ -104,6 +107,7 @@ function loadHeader() {
 
             li.classList.add("header__nav_item");
             li.innerHTML = `<a href="${__productUrl}?cate=${i}" class="nav_item__wrapper"><div class="nav_item__icon">${__icon[i]}</div><div class="nav_item__name"><p>${i}</p></div></a>`;
+            li.style.cssText = `--d:0.${time++}s`;
             //     li.innerHTML = `
             //     <a href="${__productUrl}?cate=${i}" class="nav_item__wrapper">
             //         <div class="nav_item__icon">${__icon[i]}</div>
