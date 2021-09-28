@@ -12,7 +12,7 @@ function getDataProduct() {
         staticDescription: "Product default description. Product default description. Product default description.",
         staticShortDescription: "Some short description. Some short description. ",
         categories: {
-            sp: { name: "Specialty", child: { mt: "Milk Tea", ss: "Sea Salt", ft: "Fruit Tea" } },
+            sp: { name: "Specialty", child: { mt: "Milk Tea", ss: "Sea Salt", ft: "Fruit Tea", t1: "test 11111", t2: "test 22222", t3: "test 33333333", t4: "test 4" } },
             cf: { name: "Coffee", child: { tc: "Traditinal Coffee", cc: "Classic Coffee" } },
             bnc: { name: "Blended Non-caffein" },
             bb: { name: "Blended Beverage" },
@@ -117,6 +117,307 @@ function getDataProduct() {
             ],
         })
     );
+
+    items.push(
+        new Product({
+            name: "Test 1",
+            description: "This is description for Oolong Milk Tea",
+            category: {
+                name: "sp",
+                child: "t1",
+            },
+            imgs: {
+                png: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                cover: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                noStaticPng: true,
+                noStaticCover: true,
+            },
+            type: [
+                {
+                    name: "Hot",
+                    short: "H",
+                    price: 4.95,
+                },
+                {
+                    name: "Cold Regular",
+                    short: "R",
+                    price: 5.45,
+                },
+                {
+                    name: "Cold Large",
+                    short: "L",
+                    price: 5.45,
+                },
+            ],
+            sweetness: [
+                {
+                    name: "Sweetness 100%",
+                },
+                {
+                    name: "Sweetness 125%",
+                },
+                {
+                    name: "Sweetness 50%",
+                },
+            ],
+            extra: [
+                {
+                    name: "Crystal Boba",
+                    price: 0.75,
+                },
+                {
+                    name: "Flan Bits",
+                    price: 1,
+                },
+                {
+                    name: "Longans",
+                    price: 1,
+                },
+                {
+                    name: "Lychees ",
+                    price: 1,
+                },
+                {
+                    name: "Peaches",
+                    price: 1,
+                },
+                {
+                    name: "Sea Salt",
+                    price: 0.75,
+                },
+                {
+                    name: "Tea 125%",
+                    price: 0.5,
+                },
+            ],
+        })
+    );
+
+    items.push(
+        new Product({
+            name: "Test 2",
+            description: "This is description for Oolong Milk Tea",
+            category: {
+                name: "sp",
+                child: "t2",
+            },
+            imgs: {
+                png: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                cover: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                noStaticPng: true,
+                noStaticCover: true,
+            },
+            type: [
+                {
+                    name: "Hot",
+                    short: "H",
+                    price: 4.95,
+                },
+                {
+                    name: "Cold Regular",
+                    short: "R",
+                    price: 5.45,
+                },
+                {
+                    name: "Cold Large",
+                    short: "L",
+                    price: 5.45,
+                },
+            ],
+            sweetness: [
+                {
+                    name: "Sweetness 100%",
+                },
+                {
+                    name: "Sweetness 125%",
+                },
+                {
+                    name: "Sweetness 50%",
+                },
+            ],
+            extra: [
+                {
+                    name: "Crystal Boba",
+                    price: 0.75,
+                },
+                {
+                    name: "Flan Bits",
+                    price: 1,
+                },
+                {
+                    name: "Longans",
+                    price: 1,
+                },
+                {
+                    name: "Lychees ",
+                    price: 1,
+                },
+                {
+                    name: "Peaches",
+                    price: 1,
+                },
+                {
+                    name: "Sea Salt",
+                    price: 0.75,
+                },
+                {
+                    name: "Tea 125%",
+                    price: 0.5,
+                },
+            ],
+        })
+    );
+
+    items.push(
+        new Product({
+            name: "Test 3",
+            description: "This is description for Oolong Milk Tea",
+            category: {
+                name: "sp",
+                child: "t3",
+            },
+            imgs: {
+                png: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                cover: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                noStaticPng: true,
+                noStaticCover: true,
+            },
+            type: [
+                {
+                    name: "Hot",
+                    short: "H",
+                    price: 4.95,
+                },
+                {
+                    name: "Cold Regular",
+                    short: "R",
+                    price: 5.45,
+                },
+                {
+                    name: "Cold Large",
+                    short: "L",
+                    price: 5.45,
+                },
+            ],
+            sweetness: [
+                {
+                    name: "Sweetness 100%",
+                },
+                {
+                    name: "Sweetness 125%",
+                },
+                {
+                    name: "Sweetness 50%",
+                },
+            ],
+            extra: [
+                {
+                    name: "Crystal Boba",
+                    price: 0.75,
+                },
+                {
+                    name: "Flan Bits",
+                    price: 1,
+                },
+                {
+                    name: "Longans",
+                    price: 1,
+                },
+                {
+                    name: "Lychees ",
+                    price: 1,
+                },
+                {
+                    name: "Peaches",
+                    price: 1,
+                },
+                {
+                    name: "Sea Salt",
+                    price: 0.75,
+                },
+                {
+                    name: "Tea 125%",
+                    price: 0.5,
+                },
+            ],
+        })
+    );
+
+    items.push(
+        new Product({
+            name: "Test 4",
+            description: "This is description for Oolong Milk Tea",
+            category: {
+                name: "sp",
+                child: "t4",
+            },
+            imgs: {
+                png: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                cover: "https://www.nicepng.com/png/full/115-1152454_cup-mug-coffee-png-image-coffee-png.png",
+                noStaticPng: true,
+                noStaticCover: true,
+            },
+            type: [
+                {
+                    name: "Hot",
+                    short: "H",
+                    price: 4.95,
+                },
+                {
+                    name: "Cold Regular",
+                    short: "R",
+                    price: 5.45,
+                },
+                {
+                    name: "Cold Large",
+                    short: "L",
+                    price: 5.45,
+                },
+            ],
+            sweetness: [
+                {
+                    name: "Sweetness 100%",
+                },
+                {
+                    name: "Sweetness 125%",
+                },
+                {
+                    name: "Sweetness 50%",
+                },
+            ],
+            extra: [
+                {
+                    name: "Crystal Boba",
+                    price: 0.75,
+                },
+                {
+                    name: "Flan Bits",
+                    price: 1,
+                },
+                {
+                    name: "Longans",
+                    price: 1,
+                },
+                {
+                    name: "Lychees ",
+                    price: 1,
+                },
+                {
+                    name: "Peaches",
+                    price: 1,
+                },
+                {
+                    name: "Sea Salt",
+                    price: 0.75,
+                },
+                {
+                    name: "Tea 125%",
+                    price: 0.5,
+                },
+            ],
+        })
+    );
+
     items.push(
         new Product({
             name: "Longbong Milk Tea",

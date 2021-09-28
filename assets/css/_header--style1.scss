@@ -1,0 +1,10 @@
+:root {
+    --header--bg: #{$color_option--2};
+    --header--itemColor: #{$color_grey--lighter};
+    --header--itemColorHover: #{$color_grey--lighter};
+    --header--itemPColorHover: #{$color_grey--lighter};
+    --header--itemPHasSubColorHover: #{$color_option--2};
+}
+.navMobile__trigger-line {
+    background: var(--header--itemColor) !important;
+}

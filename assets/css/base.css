@@ -55,6 +55,7 @@ a {
 
 button {
   font-family: inherit;
+  outline: none;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -62,6 +63,7 @@ button {
 
 input {
   font-family: inherit;
+  outline: none;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -89,5 +91,11 @@ input {
 
 .t {
   background: rgba(204, 204, 204, 0.4);
+}
+
+.btn {
+  border: 1px solid #000;
+  background: transparent;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=base.css.map */

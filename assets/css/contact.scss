@@ -1,0 +1,9 @@
+@import "myVar";
+body {
+    background: $color_option--2;
+}
+
+@import "header";
+@import "header--style1";
+@import "contactForm";
+@import "sideNav";

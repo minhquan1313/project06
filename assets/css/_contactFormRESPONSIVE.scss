@@ -1,0 +1,126 @@
+@import "myVar";
+$header_height: 50px;
+// PC 80em = 1280px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 80em) {
+}
+// TABLET 37.5em = 600px | 79.9375em = 1279px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@media (min-width: 37.5em) and (max-width: 79.9375em) {
+    .frame {
+        height: unset;
+    }
+    .app {
+        flex-direction: column;
+
+        height: unset;
+        min-height: calc(100vh - #{$header_height});
+    }
+    .app-side {
+        flex: unset;
+    }
+    .app-side--cover {
+        height: 30vh;
+    }
+    .app-side--info {
+        min-height: calc(70vh - #{$header_height});
+    }
+    .app-cover__icon {
+        width: unset;
+        height: 60%;
+
+        svg {
+            height: 100%;
+            width: auto;
+        }
+    }
+    .app-cover__background {
+        flex-direction: column-reverse;
+
+        justify-content: end;
+    }
+    .app-cover__label {
+        margin: $spacing_m 0 0;
+
+        font-size: 18px;
+    }
+    .form {
+        // overflow-y: scroll;
+    }
+}
+// PHONE 37.4375em = 599px -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@media (max-width: 37.4375em) {
+    .frame {
+        height: unset;
+    }
+    .app {
+        flex-direction: column;
+
+        height: unset;
+    }
+    .app-side {
+        flex: unset;
+    }
+    .app-side--cover {
+        height: 30vh;
+    }
+    .app-side--info {
+        // height: 70%;
+    }
+    .app-cover__icon {
+        width: unset;
+        height: 60%;
+
+        svg {
+            height: 100%;
+            width: auto;
+        }
+    }
+    .app-cover__background {
+        flex-direction: column-reverse;
+
+        justify-content: end;
+    }
+    .app-cover__label {
+        margin: $spacing_m 0 0;
+
+        font-size: 18px;
+    }
+    .form {
+        // overflow-y: scroll;
+
+        padding: $spacing_s * 2 $spacing_s * 2 $spacing_s;
+
+        grid-template-rows: auto auto auto auto auto 1fr;
+        grid-template-columns: 1fr;
+    }
+    .label--name {
+        grid-area: 1/1;
+    }
+    .label--tel {
+        grid-area: 2/1;
+    }
+    .label--mail {
+        grid-area: 3/1;
+    }
+    .label--subject {
+        grid-area: 4/1;
+    }
+    .form__input {
+        font-size: 16px;
+    }
+    .label--message {
+        grid-area: 5/1;
+
+        height: fit-content;
+        .form__input {
+            height: 150px;
+        }
+    }
+    .form__submit {
+        grid-area: 6/1;
+    }
+    .form__submit-btn {
+        padding: 6px 28px;
+
+        font-size: 14px;
+    }
+}

@@ -14,6 +14,8 @@ function header_searchHandler() {
         mobileResultBox = document.querySelector(".navMobile__side  .result__body_items"),
         mobileReset = document.querySelector(".header__search_reset");
 
+    // console.log("mobileReset", mobileReset);
+
     // console.log("mobileResultBox", mobileResultBox);
     // let eleTrigger;
 

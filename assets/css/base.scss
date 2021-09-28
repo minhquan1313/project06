@@ -2,9 +2,9 @@
 // Start FONT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 @font-face {
     font-family: "phucLong";
-    src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot");
-    src: url("/project06/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"),
-        url("/project06/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/project06/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot");
+    src: url("/assets/font/bauhaus/VLBauhausStdLight.eot?#iefix") format("embedded-opentype"), url("/assets/font/bauhaus/VLBauhausStdLight.woff") format("woff"),
+        url("/assets/font/bauhaus/VLBauhausStdLight.ttf") format("truetype"), url("/assets/font/bauhaus/VLBauhausStdLight.svg#phucLong") format("svg");
     font-style: normal;
     font-weight: normal;
 }
@@ -57,14 +57,14 @@ a {
 }
 button {
     font-family: inherit;
-    // outline: none;
+    outline: none;
 
     appearance: none;
 }
 
 input {
     font-family: inherit;
-    // outline: none;
+    outline: none;
 
     appearance: none;
 }
@@ -86,5 +86,10 @@ input {
 }
 .t {
     background: rgba(204, 204, 204, 0.4);
+}
+.btn {
+    border: 1px solid #000;
+    background: transparent;
+    border-radius: 10px;
 }
 // -=End common classes-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

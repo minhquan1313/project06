@@ -12,9 +12,12 @@ function _myDefaultWp(ele, callback) {
                         callback();
                     }
                 },
-                offset: window.innerHeight - ele.getBoundingClientRect().height,
+
+                // offset: window.innerHeight - ele.getBoundingClientRect().height,
+
                 // offset: window.innerHeight - ele.offsetHeight,
-                // offset: `${((window.innerHeight * 2) / 3 / window.innerHeight) * 100}%`,
+
+                offset: `${((window.innerHeight * 2) / 3 / window.innerHeight) * 100}%`,
             });
         }
     }, 100);
@@ -99,54 +102,55 @@ function setStuff() {
         cover[0].style.transformOrigin = "left";
         cover[1].style.transformOrigin = "right";
     }
-    cover.forEach((r, i) => {
-        _myDefaultWp(r, () => {
-            // let ele = r;
-            // anime({
-            //     targets: r,
-            //     opacity: { value: [0, 1], easing: "easeOutSine" },
-            //     scale: [0, 1],
-            //     // scaleX: { value: [0, 1], duration: 1500 },
+    // cover.forEach((r, i) => {
+    // _myDefaultWp(r, () => {
+    // let ele = r;
+    // anime({
+    //     targets: r,
+    //     opacity: { value: [0, 1], easing: "easeOutSine" },
+    //     scale: [0, 1],
+    //     // scaleX: { value: [0, 1], duration: 1500 },
 
-            //     easing: "easeOutQuart",
-            //     duration: 800,
+    //     easing: "easeOutQuart",
+    //     duration: 800,
 
-            //     begin: () => {
-            //         r.querySelector("svg").classList.add("animate");
-            //     },
+    //     begin: () => {
+    //         r.querySelector("svg").classList.add("animate");
+    //     },
 
-            //     complete: () => {
-            //         rmStyle(r);
-            //         // r.querySelector("svg").classList.add("animate");
-            //     },
-            // });
+    //     complete: () => {
+    //         rmStyle(r);
+    //         // r.querySelector("svg").classList.add("animate");
+    //     },
+    // });
 
-            // anime({
-            //     targets: circleShape[i],
-            //     opacity: { value: [0, 1], easing: "easeOutSine" },
+    // anime({
+    //     targets: circleShape[i],
+    //     opacity: { value: [0, 1], easing: "easeOutSine" },
 
-            //     scale: [0, 1],
+    //     scale: [0, 1],
 
-            //     easing: "easeOutQuart",
-            //     duration: 1400,
-            // });
+    //     easing: "easeOutQuart",
+    //     duration: 1400,
+    // });
 
-            // document.body.style.animation
+    // document.body.style.animation
 
-            r.style.animation = `animateB-I 1s forwards`;
-            r.classList.add("animate");
-            // r.querySelector("svg").classList.add("animate");
-            circleShape[i].style.animation = `animateZI 1s forwards`;
+    // r.style.animation = `animateB-I 1s forwards`;
+    // r.classList.add("animate");
+    // circleShape[i].style.animation = `animateZI 1s forwards`;
 
-            // console.log("r", r);
-            // console.log(window.innerHeight, r.offsetHeight, window.innerHeight - r.offsetHeight, window.innerHeight - r.getBoundingClientRect().height);
+    // r.querySelector("svg").classList.add("animate");
 
-            setTimeout(() => {
-                rmStyle(r);
-                rmStyle(circleShape[i]);
-            }, 1050);
-        });
-    });
+    // console.log("r", r);
+    // console.log(window.innerHeight, r.offsetHeight, window.innerHeight - r.offsetHeight, window.innerHeight - r.getBoundingClientRect().height);
+
+    // setTimeout(() => {
+    //     rmStyle(r);
+    //     rmStyle(circleShape[i]);
+    // }, 1050);
+    // });
+    // });
 
     // title.forEach((r, i) => {
     //     _myDefaultWp(r, () => {
@@ -179,43 +183,41 @@ function setStuff() {
     //     });
     // });
 
-    des.forEach((r, i) => {
-        _myDefaultWp(r, () => {
-            // r.style.transformOrigin = "top";
+    // des.forEach((r, i) => {
+    //     _myDefaultWp(r, () => {
+    // r.style.transformOrigin = "top";
 
-            // let ele = r;
-            // anime({
-            //     targets: r,
-            //     opacity: { value: [0, 1], easing: "easeOutSine" },
-            //     // skewX: { value: [negative * 180, 0], duration: 1400 },
+    // let ele = r;
+    // anime({
+    //     targets: r,
+    //     opacity: { value: [0, 1], easing: "easeOutSine" },
+    //     // skewX: { value: [negative * 180, 0], duration: 1400 },
 
-            //     scaleY: [0, 1],
-            //     // translateX: [`${-negative}00%`, 0],
-            //     translateY: ["-100%", 0],
+    //     scaleY: [0, 1],
+    //     // translateX: [`${-negative}00%`, 0],
+    //     translateY: ["-100%", 0],
 
-            //     // delay: 400,
+    //     // delay: 400,
 
-            //     easing: "easeOutBack",
-            //     duration: 700,
+    //     easing: "easeOutBack",
+    //     duration: 700,
 
-            //     complete: () => {
-            //         rmStyle(r);
-            //     },
-            // });
+    //     complete: () => {
+    //         rmStyle(r);
+    //     },
+    // });
 
-            if (i == 0) {
-                r.style.animation = `animateLsI-R 1s forwards`;
-                // r.style.animation = `animateLsI-R 1s .2s forwards`;
-            } else {
-                r.style.animation = `animateLsI-L 1s forwards`;
-                // r.style.animation = `animateLsI-L 1s .2s forwards`;
-            }
+    // if (i == 0) {
+    //     r.style.animation = `animateLsI-R 1s forwards`;
+    // } else {
+    //     r.style.animation = `animateLsI-L 1s forwards`;
+    // }
 
-            setTimeout(() => {
-                rmStyle(r);
-            }, 1250);
-        });
-    });
+    // setTimeout(() => {
+    //     rmStyle(r);
+    // }, 1250);
+    // });
+    // });
     title.forEach((r, i) => {
         _myDefaultWp(r, () => {
             // let ele = r;
@@ -240,50 +242,61 @@ function setStuff() {
 
             if (i == 0) {
                 r.style.animation = `animateLsI-R 1.2s forwards`;
+                des[i].style.animation = `animateLsI-R 1s forwards`;
+                btn[i].style.animation = `animateLsI-R 1s forwards`;
             } else {
                 r.style.animation = `animateLsI-L 1.2s forwards`;
+                des[i].style.animation = `animateLsI-L 1s forwards`;
+                btn[i].style.animation = `animateLsI-L 1s forwards`;
             }
+
+            cover[i].style.animation = `animateB-I 1s forwards`;
+            cover[i].classList.add("animate");
+            circleShape[i].style.animation = `animateZI 1s forwards`;
 
             setTimeout(() => {
                 rmStyle(r);
+                rmStyle(btn[i]);
+                rmStyle(des[i]);
+
+                rmStyle(cover[i]);
+                rmStyle(circleShape[i]);
             }, 1250);
         });
     });
-    btn.forEach((r, i) => {
-        _myDefaultWp(r, () => {
-            // let ele = r;
-            // anime({
-            //     targets: r,
-            //     opacity: { value: [0, 1], easing: "easeOutSine" },
-            //     // skewX: { value: [negative * 180, 0], duration: 1400 },
+    // btn.forEach((r, i) => {
+    // _myDefaultWp(r, () => {
+    // let ele = r;
+    // anime({
+    //     targets: r,
+    //     opacity: { value: [0, 1], easing: "easeOutSine" },
+    //     // skewX: { value: [negative * 180, 0], duration: 1400 },
 
-            //     scaleY: [0, 1],
-            //     // translateX: [`${-negative}00%`, 0],
-            //     translateY: ["-100%", 0],
+    //     scaleY: [0, 1],
+    //     // translateX: [`${-negative}00%`, 0],
+    //     translateY: ["-100%", 0],
 
-            //     // delay: 400,
+    //     // delay: 400,
 
-            //     easing: "easeOutBack",
-            //     duration: 700,
+    //     easing: "easeOutBack",
+    //     duration: 700,
 
-            //     complete: () => {
-            //         rmStyle(r);
-            //     },
-            // });
+    //     complete: () => {
+    //         rmStyle(r);
+    //     },
+    // });
 
-            if (i == 0) {
-                // r.style.animation = `animateLsI-R 1s .4s forwards`;
-                r.style.animation = `animateLsI-R 1s forwards`;
-            } else {
-                // r.style.animation = `animateLsI-L 1s .4s forwards`;
-                r.style.animation = `animateLsI-L 1s forwards`;
-            }
+    // if (i == 0) {
+    // r.style.animation = `animateLsI-R 1s forwards`;
+    // } else {
+    // r.style.animation = `animateLsI-L 1s forwards`;
+    // }
 
-            setTimeout(() => {
-                rmStyle(r);
-            }, 1450);
-        });
-    });
+    // setTimeout(() => {
+    // rmStyle(r);
+    // }, 1450);
+    // });
+    // });
     // --------------------------------------------------------------------------------------------
     _myDefaultWp(slider, () => {
         // let ele = r;

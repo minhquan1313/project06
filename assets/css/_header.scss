@@ -1,3 +1,10 @@
+:root {
+    --header--bg: #fff;
+    --header--itemColor: #{$color_grey};
+    --header--itemColorHover: #{$color_option--2};
+    --header--itemPColorHover: #{$color_option--2};
+    --header--itemPHasSubColorHover: #{$color_option--2};
+}
 header {
     position: fixed;
     top: 0;
@@ -8,7 +15,7 @@ header {
     height: $header_height;
     display: flex;
 
-    background: #fff;
+    background: var(--header--bg);
     box-shadow: 0 2px 8px $shadow1;
     //   &.style2 {
     //     background: $color_option--2;
@@ -97,7 +104,7 @@ header {
     width: $navItem_width;
     height: $header_height;
     //   background: #ccc;
-    color: $color_grey;
+    color: var(--header--itemColor);
 }
 .nav_item__icon {
     position: absolute;
@@ -119,7 +126,7 @@ header {
     will-change: transform, left;
 
     .header__nav_item:hover & {
-        color: $color_option--2;
+        color: var(--header--itemColorHover);
     }
 
     .header__nav_item--hasSub:hover & {
@@ -151,8 +158,13 @@ header {
         z-index: 2;
         transform: scale(0);
 
-        .header__nav_item--hasSub &:hover ~ p {
-            transform: scale(1.1);
+        .header__nav_item--hasSub {
+            ~ p {
+                transition: 0.3s;
+            }
+            &:hover ~ p {
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -168,7 +180,7 @@ header {
         // width: fit-content;
         .header__nav_item:hover & {
             // color: $color_main--lighter;
-            color: $color_option--2;
+            color: var(--header--itemPColorHover);
         }
     }
 
@@ -179,6 +191,8 @@ header {
         > p {
             padding: $spacing_ss $spacing_m;
             //   height: 100%;
+
+            color: var(--header--itemPHasSubColorHover);
 
             border-radius: 6px;
 
@@ -208,13 +222,14 @@ header {
 
     transform-origin: top;
 
-    transform: translateX(-50%) scale(0);
+    --trx: -50%;
+    transform: translateX(var(--trx)) scale(0);
     transition: 0.3s;
 
     //   cursor: default;
     .header__nav_item:hover & {
         opacity: 1;
-        transform: translateX(-50%) scale(1);
+        transform: translateX(var(--trx)) scale(1);
     }
 
     &::after {
@@ -296,7 +311,8 @@ header {
 
     background: #fff;
 
-    transition: all 0.3s, border-radius 0.2s;
+    // transition: all 0.3s, border-radius 0.2s;
+    transition: all 0.3s, border-radius 0.2s 0.3s;
 }
 .search_placeholder {
     position: absolute;
@@ -318,7 +334,7 @@ header {
 
 .header__search_result {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 1px);
     left: 0;
     width: 100%;
     //   height: 300px;
@@ -678,6 +694,8 @@ header {
             border-radius: 20px 20px 0 0;
 
             box-shadow: 2px 4px 8px $shadow12;
+
+            transition: all 0.3s, border-radius 0s;
         }
         ~ .header__search_result {
             transform: scaleY(1);
