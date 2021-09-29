@@ -715,6 +715,11 @@ header ~ *:nth-child(2) {
           flex-direction: column;
 }
 
+.frame > * {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 .sideNavigation {
   position: fixed;
   left: 0;
