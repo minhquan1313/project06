@@ -1300,6 +1300,7 @@ footer {
   background: #39bd7f;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  pointer-events: none;
 }
 
 .sideNavigation a:hover {
@@ -1320,5 +1321,9 @@ footer {
 .sideNavigation:hover {
   -webkit-transform: translateY(-50%) translateX(0);
           transform: translateY(-50%) translateX(0);
+}
+
+.sideNavigation:hover a {
+  pointer-events: all;
 }
 /*# sourceMappingURL=style.css.map */
