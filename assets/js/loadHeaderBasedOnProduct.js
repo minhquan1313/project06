@@ -52,7 +52,7 @@ function loadHeader() {
             // console.log("subs", [...subs]);
 
             // for (let j of subs) {
-            //     console.log(j);
+            //  console.log(j);
             // }
 
             // let subHtml = [...subs]

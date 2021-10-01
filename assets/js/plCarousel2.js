@@ -19,15 +19,18 @@ function generateSliders() {
     // for (let i = 0; i < _slider_items.length; i++) {
     _slider_items.forEach((r, i) => {
         let ele = document.createElement("li");
-        ele.classList.add("slider__item");
-        ele.classList.add("slider__item--loading");
+        ele.classList.add("slider__item", "slider__item--loading");
+        // ele.classList.add();
 
         // if (i < 3) {
         //     ele.classList.add(order[i]);
         // }
 
-        ele.innerHTML = `<div class="pt" style="--pt: 56.25%"><img src="" draggable="false" alt="" /></div>`;
-        let img = ele.querySelector("img");
+        // ele.innerHTML = `<img src="" draggable="false" alt="" />`;
+        // ele.innerHTML = `<div class="pt" style="--pt: 56.25%"><img src="" draggable="false" alt="" /></div>`;
+        // let img = ele.querySelector("img");
+        let img = document.createElement("img");
+        ele.appendChild(img);
 
         let fImg = new Image();
 
@@ -69,6 +72,19 @@ function generateSliders() {
     //     <img src="" draggable="false" alt="" />
     //   </div>`;
     // wrapper.appendChild(ele);
+}
+function sliderHeightAuto() {
+    const pt = document.querySelector(".slider .pt");
+    const parent = pt.parentElement;
+    const ratio = 56.25 / 100;
+
+    // console.log(pt);
+
+    setHeight();
+    window.addEventListener("resize", setHeight);
+    function setHeight() {
+        pt.style.height = parent.offsetWidth * ratio + "px";
+    }
 }
 function my_carousel2() {
     function sActive(ele) {
@@ -413,6 +429,8 @@ document.addEventListener("readystatechange", () => {
     if (document.readyState === "complete" && typeof _slider_items) {
         anime.suspendWhenDocumentHidden = false;
         generateSliders();
+
+        sliderHeightAuto();
 
         my_carousel2();
     }

@@ -45,7 +45,7 @@ function __loaderRemove() {
             r.style.opacity = "0";
 
             // window.addEventListener("mousemove", (e) => {
-            //     console.log(e.x, e.y);
+            // console.log(e.x, e.y);
             // });
 
             // console.log("mask", mask);

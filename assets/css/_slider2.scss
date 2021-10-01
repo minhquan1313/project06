@@ -6,6 +6,13 @@ $scale: 2.6;
 
     // padding-bottom: $spacing_l*2;
     // overflow: hidden;
+    // max-height: calc(100vh - #{$header_height});
+
+    > .frame__inner {
+        > .pt {
+            max-height: calc(100vh - #{$header_height});
+        }
+    }
 }
 .slider__items {
     position: absolute;
@@ -37,19 +44,31 @@ $scale: 2.6;
 
     will-change: opacity;
 
-    .pt {
-        img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+    // .pt {
+    //     img {
+    //         position: absolute;
+    //         inset: 0;
+    //         width: 100%;
+    //         height: 100%;
 
-            object-fit: cover;
+    //         object-fit: cover;
 
-            object-position: center;
+    //         object-position: center;
 
-            border-radius: 0 0 30px 30px;
-        }
+    //         border-radius: 0 0 30px 30px;
+    //     }
+    // }
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        object-position: center;
+
+        border-radius: 0 0 30px 30px;
     }
 
     &.active {

@@ -944,6 +944,10 @@ footer {
           user-select: none;
 }
 
+.slider > .frame__inner > .pt {
+  max-height: calc(100vh - 56px);
+}
+
 .slider__items {
   position: absolute;
   top: 0;
@@ -974,7 +978,7 @@ footer {
   will-change: opacity;
 }
 
-.slider__item .pt img {
+.slider__item img {
   position: absolute;
   inset: 0;
   width: 100%;

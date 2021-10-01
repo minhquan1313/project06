@@ -543,7 +543,7 @@
   .arrowNav--right {
     width: 34px;
   }
-  .slider__item--loading .pt img {
+  .slider__item--loading img {
     border-radius: 0;
   }
 }
@@ -563,7 +563,7 @@
   .dot + .dot {
     margin-left: 10px;
   }
-  .slider__item--loading .pt img {
+  .slider__item--loading img {
     border-radius: 0;
   }
 }

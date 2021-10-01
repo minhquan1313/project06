@@ -19,7 +19,7 @@ function organizeProcess() {
         setTimeout(() => {
             let bound = ul.getBoundingClientRect();
             let x = bound.x;
-            console.log("x", x);
+            // console.log("x", x);
 
             if (x < 0) {
                 // isOver = true;
