@@ -30,6 +30,7 @@ function generateSliders() {
         // ele.innerHTML = `<div class="pt" style="--pt: 56.25%"><img src="" draggable="false" alt="" /></div>`;
         // let img = ele.querySelector("img");
         let img = document.createElement("img");
+        img.setAttribute("draggable", "false");
         ele.appendChild(img);
 
         let fImg = new Image();
